@@ -35,9 +35,6 @@ public interface GCLogFileReader {
 
     public void setupGCActivityNames(GCTrace gcTrace);
 
-    public void readFile(File file,
-                         GCTrace gcTrace,
-                         GCLogFileReaderThrottle throttle)
-            throws IOException;
+    public void readFile(File file, GCTrace gcTrace, GCLogFileReaderThrottle throttle) throws IOException;
 
 }
