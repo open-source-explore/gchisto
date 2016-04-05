@@ -23,13 +23,12 @@
  */
 package gchisto.gctracegenerator;
 
-import javax.swing.JComponent;
+import javax.swing.*;
 
 public interface GCTraceGenerator {
-    
+
     public String getGCTraceType();
-    
-    public void createNewGCTrace(JComponent component,
-            GCTraceGeneratorListener listener);
-    
+
+    public void createNewGCTrace(JComponent component, GCTraceGeneratorListener listener);
+
 }

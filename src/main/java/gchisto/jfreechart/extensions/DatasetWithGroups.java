@@ -25,7 +25,7 @@ package gchisto.jfreechart.extensions;
 
 /**
  * An interface that represents a dataset that can be partitioned into
- * groups and each group can be activated / de-activated. Groups can 
+ * groups and each group can be activated / de-activated. Groups can
  * correpond to series that JFreeChart datasets have. However, they are
  * a more general abstraction to allow different dataset subdivisions.
  * It is up to the implementing class to keep track of whether each group
@@ -34,14 +34,14 @@ package gchisto.jfreechart.extensions;
  * @author Tony Printezis
  */
 public interface DatasetWithGroups {
-    
+
     /**
      * It returns the number of groups in the dataset.
      *
      * @return The number of groups in the dataset.
      */
     public int getGroupCount();
-    
+
     /**
      * It returns the name of the group with the given index.
      *
@@ -49,22 +49,22 @@ public interface DatasetWithGroups {
      * @return The name of the group with the givan index.
      */
     public String getGroupName(int group);
-    
+
     /**
      * It determines whether the group with the given index is active.
      *
      * @param group The index of the group to be determined whether it is
-     * active.
+     *              active.
      * @return Whether the group with the given index is active.
      */
     public boolean isGroupActive(int group);
-    
+
     /**
-     * It sets whether the group with the given index is active or not. 
+     * It sets whether the group with the given index is active or not.
      *
-     * @param group The index of the group to be set as active or not active.
+     * @param group  The index of the group to be set as active or not active.
      * @param active Whether the group will be set as active or not.
      */
     public void setGroupActive(int group, boolean active);
-    
+
 }

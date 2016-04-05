@@ -31,20 +31,19 @@ package gchisto.utils;
  * class provides <tt>Formatter</tt> factories.
  *
  * @author Tony Printezis
- * @see    java.text.NumberFormat
+ * @see java.text.NumberFormat
  */
 public interface Formatter {
-    
+
     /**
      * It formats the given number into a string, according to the formatter's
      * requirements.
      *
      * @param number The number to be formatted into a string.
-     * @return The given number, formatted according to the formatter's 
+     * @return The given number, formatted according to the formatter's
      * requirements.
-     *
      * @see gchisto.utils.Formatting
      */
     public String format(Number number);
-    
+
 }

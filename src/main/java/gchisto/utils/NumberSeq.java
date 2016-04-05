@@ -24,14 +24,14 @@
 package gchisto.utils;
 
 /**
- * A class representing a number sequence. Numbers can be added to this 
+ * A class representing a number sequence. Numbers can be added to this
  * sequence and standard statistical values (like average, standard deviation,
  * etc.) can be calculated against this sequence.
  *
  * @author Tony Printezis
  */
 public class NumberSeq {
-    
+
     /**
      * How many numbers added to this sequence.
      *
@@ -39,57 +39,56 @@ public class NumberSeq {
      * @see #getNumD()
      */
     private int num;
-    
+
     /**
      * The sum of numbers added to this sequence.
      *
      * @see #getSum()
      */
     private double sum;
-    
+
     /**
      * The sum of squares of the numbers added to this sequence.
      *
      * @see #getSumOfSquares()
      */
     private double sumOfSquares;
-    
+
     /**
      * The minimum number added to this sequence.
      *
      * @see #getMin()
      */
     private double min;
-    
+
     /**
      * The maximum number added to this sequence.
      *
      * @see #getMax()
      */
     private double max;
-    
+
     /**
      * It returns how many numbers added to this sequence.
      *
      * @return How many numbers added to this sequence.
-     *
      * @see #getNumD()
      */
     public int getNum() {
         return num;
     }
-    
+
     /**
      * It returns how many numbers added to this sequence.
      *
      * @return How many numbers added to this sequence.
-     *
+     * <p/>
      * #see #getNum()
      */
     public double getNumD() {
         return (double) num;
     }
-    
+
     /**
      * It returns the sum of numbers added to this sequence.
      *
@@ -98,7 +97,7 @@ public class NumberSeq {
     public double getSum() {
         return sum;
     }
-    
+
     /**
      * It returns the sum of squares of the numbers added to this sequence.
      *
@@ -107,7 +106,7 @@ public class NumberSeq {
     private double getSumOfSquares() {
         return sumOfSquares;
     }
-    
+
     /**
      * It returns the minimum number added to this sequence.
      *
@@ -117,17 +116,17 @@ public class NumberSeq {
     public double getMin() {
         return min;
     }
-    
+
     /**
      * It returns the maximum number added to this sequence.
      *
-     * @return The maximum number added to this sequence, or <tt>0</tt> if 
+     * @return The maximum number added to this sequence, or <tt>0</tt> if
      * the sequnce is empty.
      */
     public double getMax() {
         return max;
     }
-    
+
     /**
      * It calculates the average of the sequence.
      *
@@ -137,7 +136,7 @@ public class NumberSeq {
     public double getAvg() {
         return (getNum() > 0) ? getSum() / getNumD() : 0.0;
     }
-    
+
     /**
      * It calculates the variance of the sequence.
      *
@@ -147,8 +146,8 @@ public class NumberSeq {
     private double getVariance() {
         if (getNum() <= 1)
             return 0.0;
-        
-        double variance = 
+
+        double variance =
                 (getSumOfSquares() - getSum() * getSum() / getNumD()) / (getNum() - 1.0);
         if (variance < 0.0) {
             assert Comparisons.eq(variance, 0.0);
@@ -156,7 +155,7 @@ public class NumberSeq {
         }
         return variance;
     }
-    
+
     /**
      * It calculates the standard deviation of the sequence.
      *
@@ -168,7 +167,7 @@ public class NumberSeq {
         assert variance >= 0.0 : "variance = " + variance;
         return Math.sqrt(variance);
     }
-    
+
     /**
      * It adds a new number to the sequence.
      *
@@ -189,7 +188,7 @@ public class NumberSeq {
         sumOfSquares += number * number;
         ++num;
     }
-    
+
     /**
      * It empties the sequence.
      */
@@ -200,12 +199,12 @@ public class NumberSeq {
         min = 0.0;
         max = 0.0;
     }
-    
+
     /**
      * It creates a new number sequence instance.
      */
     public NumberSeq() {
         empty();
     }
-    
+
 }

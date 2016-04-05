@@ -29,20 +29,20 @@ import gchisto.gctrace.GCTrace;
  * TODO
  */
 public interface GCTraceGeneratorListener {
-    
+
     /**
-     * TODO
+     * 开始
      */
     public void started();
-    
+
     /**
-     * TODO
+     * 完成
      */
     public void finished(GCTrace gcTrace);
-    
+
     /**
-     * TODO
+     * 失败
      */
     public void failed();
-    
+
 }

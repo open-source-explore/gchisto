@@ -24,6 +24,7 @@
 package gchisto.utils;
 
 import gchisto.utils.errorchecking.ArgumentChecking;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,12 +35,12 @@ import java.util.List;
  * @author Tony Printezis
  */
 abstract public class ListenerSet<L> {
-    
+
     /**
      * The list that contains the added listener objects.
      */
     final private List<L> listeners = new LinkedList<L>();
-    
+
     /**
      * It returns the linked list that holds the listeners.
      *
@@ -48,7 +49,7 @@ abstract public class ListenerSet<L> {
     protected List<L> listeners() {
         return listeners;
     }
-    
+
     /**
      * It adds a listener to this set.
      *
@@ -56,12 +57,12 @@ abstract public class ListenerSet<L> {
      */
     public void add(L listener) {
         ArgumentChecking.notNull(listener, "listener");
-        
+
         assert !listeners.contains(listener) :
-            "listener " + listener + " should not already exist in the listener set.";
+                "listener " + listener + " should not already exist in the listener set.";
         listeners.add(listener);
     }
-    
+
     /**
      * It removes a listener from this set.
      *
@@ -71,14 +72,14 @@ abstract public class ListenerSet<L> {
         ArgumentChecking.notNull(listener, "listener");
 
         assert listeners.contains(listener) :
-            "listener " + listener + " should already exist in the listener set.";
+                "listener " + listener + " should already exist in the listener set.";
         listeners.remove(listener);
     }
-    
+
     /**
      * It creates a listener set instance.
      */
     protected ListenerSet() {
     }
-    
+
 }

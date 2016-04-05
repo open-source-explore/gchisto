@@ -25,15 +25,15 @@ package gchisto.gui.panels.gcstats;
 
 import gchisto.jfreechart.extensions.ChangingPieDatasetWithTTG;
 import gchisto.jfreechart.extensions.ChartLocker;
-import gchisto.jfreechart.extensions.ChartLocker;
-import java.awt.BorderLayout;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 
+import java.awt.*;
+
 /**
- * A panel that contains a chart that shows the breakdown of a particular 
+ * A panel that contains a chart that shows the breakdown of a particular
  * metric over all GC activities. This panel should be used when only one
  * GC trace have been loaded. The chart is implemented as a pie chart.
  * Each such panel will be added to the tabbed pane of the main GC stats panel.
@@ -57,7 +57,7 @@ public class BreakdownChartPanelSingle extends GCStatsChartPanel {
         chart.addProgressListener(locker);
         PiePlot plot = (PiePlot) chart.getPlot();
         plot.setToolTipGenerator(dataset);
-        
+
         mainPanel().add(BorderLayout.CENTER, new ChartPanel(chart));
     }
 
@@ -76,10 +76,10 @@ public class BreakdownChartPanelSingle extends GCStatsChartPanel {
 
     /**
      * It creates a new instance of this panel and adds a chart into it.
-     * 
-     * @param title The name of the metric name.
+     *
+     * @param title    The name of the metric name.
      * @param unitName The name of the unit of the metric.
-     * @param dataset The dataset that will provide the values for the chart.
+     * @param dataset  The dataset that will provide the values for the chart.
      */
     public BreakdownChartPanelSingle(
             String title, String unitName,

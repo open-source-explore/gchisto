@@ -23,7 +23,7 @@
  */
 /**
  * It contains all the subpackages that are used for the different panels
- * that can be added to the tabbed panes of the main frame, as well as 
+ * that can be added to the tabbed panes of the main frame, as well as
  * the interfaces that those panels should implement.
  */
 package gchisto.gui.panels;

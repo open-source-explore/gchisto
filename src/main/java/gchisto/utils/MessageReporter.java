@@ -33,7 +33,7 @@ import gchisto.utils.errorchecking.ArgumentChecking;
  * @author Tony Printezis
  */
 public class MessageReporter {
-    
+
     /**
      * The object that moanages the behavior of the status label.
      */
@@ -43,48 +43,48 @@ public class MessageReporter {
      * It sets the object that manages the behavior of the status label.
      *
      * @param statusLabel The object that manages the behavior of the status
-     * label.
+     *                    label.
      */
     static public void setStatusLabel(StatusLabelManager statusLabel) {
         ArgumentChecking.notNull(statusLabel, "statusLabel");
-        
+
         MessageReporter.statusLabel = statusLabel;
     }
-    
+
     /**
      * It shows a message in the status label.
      *
      * @param str The message to be shown in the status label.
      */
     static public void showMessage(String str) {
-    	if (statusLabel==null) {
-    		System.out.println(str);
-    		return;
-    	}
+        if (statusLabel == null) {
+            System.out.println(str);
+            return;
+        }
         ArgumentChecking.notNull(str, "str");
-        
+
         statusLabel.showMessage(str);
     }
-    
+
     /**
      * It shows an error in the status label.
      *
      * @param str The error to be shown in the status label.
      */
     static public void showError(String str) {
-    	if (statusLabel==null) {
-    		System.out.println(str);
-    		return;
-    	}
+        if (statusLabel == null) {
+            System.out.println(str);
+            return;
+        }
         ArgumentChecking.notNull(str, "str");
-        
+
         statusLabel.showError(str);
     }
-    
+
     /**
      * Private constructor to avoid the instantiation of this class.
      */
     private MessageReporter() {
     }
-    
+
 }

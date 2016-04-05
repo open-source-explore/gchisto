@@ -34,8 +34,8 @@ public class GCTraceListenerSet extends ListenerSet<GCTraceListener> {
      * TODO
      */
     public void callGCActivityAdded(GCTrace gcTrace,
-            GCActivitySet gcActivitySet,
-            GCActivity gcActivity) {
+                                    GCActivitySet gcActivitySet,
+                                    GCActivity gcActivity) {
         ArgumentChecking.notNull(gcTrace, "gcTrace");
         ArgumentChecking.notNull(gcActivitySet, "gcActivitySet");
 

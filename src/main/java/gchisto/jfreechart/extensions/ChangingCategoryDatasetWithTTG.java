@@ -26,7 +26,6 @@ package gchisto.jfreechart.extensions;
 import org.jfree.chart.labels.CategoryToolTipGenerator;
 
 /**
- *
  * @author tony
  */
 public interface ChangingCategoryDatasetWithTTG

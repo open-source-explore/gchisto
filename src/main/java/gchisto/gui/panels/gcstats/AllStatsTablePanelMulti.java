@@ -24,10 +24,10 @@
 package gchisto.gui.panels.gcstats;
 
 import gchisto.utils.Locker;
-import java.awt.BorderLayout;
+
+import java.awt.*;
 
 /**
- *
  * @author tony
  */
 public class AllStatsTablePanelMulti extends GCStatsChartPanel {
@@ -42,12 +42,12 @@ public class AllStatsTablePanelMulti extends GCStatsChartPanel {
      * stats between the GC traces.
      *
      * @param datasetGenerator The datasetGenerator generator of this package which
-     * will provide all the values and metadata for the table.
-     * @param single It determines whether there is one GC trace loaded,
-     * or multiple ones.
+     *                         will provide all the values and metadata for the table.
+     * @param single           It determines whether there is one GC trace loaded,
+     *                         or multiple ones.
      */
     private void addTable(DatasetGenerator datasetGenerator,
-            Locker locker) {
+                          Locker locker) {
         panel = new AllStatsTableMulti(datasetGenerator, locker);
         mainPanel().add(BorderLayout.CENTER, panel);
     }
@@ -64,9 +64,9 @@ public class AllStatsTablePanelMulti extends GCStatsChartPanel {
      * It creates a new instance of this panel and adds the table into it.
      *
      * @param datasetGenerator The datasetGenerator generator of this package which
-     * will provide all the values and metadata for the table.
-     * @param single It determines whether there is one GC trace loaded,
-     * or multiple ones.
+     *                         will provide all the values and metadata for the table.
+     * @param single           It determines whether there is one GC trace loaded,
+     *                         or multiple ones.
      */
     public AllStatsTablePanelMulti(
             DatasetGenerator datasetGenerator,

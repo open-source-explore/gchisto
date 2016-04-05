@@ -30,26 +30,26 @@ import gchisto.utils.errorchecking.ArgumentChecking;
  * It can be either stop-the-world or concurrent.
  *
  * @author Tony Printezis
- * @see    gchisto.gcactivityset.GCActivitySet
+ * @see gchisto.gcactivityset.GCActivitySet
  */
 public class GCActivity {
-    
+
     private String name;
-    
+
     /**
      * The time stamp of the start of the GC activity, in seconds.
      *
      * @see #getStartSec()
      */
     private double startSec;
-    
+
     /**
      * The duration of the GC activity, in seconds.
      *
      * @see #getDurationSec()
      */
     private double durationSec;
-    
+
     /**
      * It indicates whether the GC activity is stop-the-world (true),
      * or concurrent (false).
@@ -57,45 +57,45 @@ public class GCActivity {
      * @see #isSTW()
      */
     private boolean stw;
-    
+
     /**
      * The overhead percentage of the GC activity.
      *
      * @see #getOverheadPerc()
      */
     private double overheadPerc;
-    
+
     public String getName() {
         return name;
     }
-    
+
     /**
-     * It returns the time stamp of the start of the GC activity, in seconds. 
+     * It returns the time stamp of the start of the GC activity, in seconds.
      *
-     * @return The time stamp of the start of the GC activity, in seconds. 
+     * @return The time stamp of the start of the GC activity, in seconds.
      */
     public double getStartSec() {
         return startSec;
     }
-    
+
     /**
-     * It returns the time stamp of the end of the GC activity, in seconds. 
+     * It returns the time stamp of the end of the GC activity, in seconds.
      *
-     * @return The time stamp of the end of the GC activity, in seconds. 
+     * @return The time stamp of the end of the GC activity, in seconds.
      */
     public double getEndSec() {
         return startSec + durationSec;
     }
-    
+
     /**
-     * It returns the duration of the GC activity, in seconds. 
+     * It returns the duration of the GC activity, in seconds.
      *
-     * @return The duration of the GC activity, in seconds. 
+     * @return The duration of the GC activity, in seconds.
      */
     public double getDurationSec() {
         return durationSec;
     }
-    
+
     /**
      * It returns whether the GC activity is stop-the-world.
      *
@@ -104,7 +104,7 @@ public class GCActivity {
     public boolean isSTW() {
         return stw;
     }
-    
+
     /**
      * It returns whether the GC activity is concurrent.
      *
@@ -113,7 +113,7 @@ public class GCActivity {
     public boolean isConcurrent() {
         return !stw;
     }
-    
+
     /**
      * It returns the overhead percentage of the GC activity.
      *
@@ -122,13 +122,13 @@ public class GCActivity {
     public double getOverheadPerc() {
         return overheadPerc;
     }
-    
+
     /**
      * It creates a new GC activity instance. This version should be used for
      * stop-the-world GC activities.
      *
-     * @param startSec The time stamp of the start of the GC activity, in
-     * seconds.
+     * @param startSec    The time stamp of the start of the GC activity, in
+     *                    seconds.
      * @param durationSec The duration of the GC activity, in seconds.
      */
     public GCActivity(
@@ -137,14 +137,14 @@ public class GCActivity {
             double durationSec) {
         this(name, startSec, durationSec, true, 100.0);
     }
-    
+
     /**
      * It creates a new GC activity instance. This version should be used for
      * concurrent GC activities.
      *
-     * @param startSec The time stamp of the start of the GC activity, in
-     * seconds.
-     * @param durationSec The duration of the GC activity, in seconds.
+     * @param startSec     The time stamp of the start of the GC activity, in
+     *                     seconds.
+     * @param durationSec  The duration of the GC activity, in seconds.
      * @param overheadPerc The concurrent overhead of the GC activity.
      */
     public GCActivity(
@@ -154,16 +154,16 @@ public class GCActivity {
             double overheadPerc) {
         this(name, startSec, durationSec, false, overheadPerc);
     }
-    
+
     /**
      * It creates a new GC activity instance. This is a private constructor
      * for use by the public ones.
      *
-     * @param startSec The time stamp of the start of the GC activity, in
-     * seconds.
-     * @param durationSec The duration of the GC activity, in seconds.
-     * @param stw It indicates whether the GC activity is stop-the-world (true),
-     * or concurrent (false).
+     * @param startSec     The time stamp of the start of the GC activity, in
+     *                     seconds.
+     * @param durationSec  The duration of the GC activity, in seconds.
+     * @param stw          It indicates whether the GC activity is stop-the-world (true),
+     *                     or concurrent (false).
      * @param overheadPerc The concurrent overhead of the GC activity.
      */
     private GCActivity(
@@ -175,12 +175,12 @@ public class GCActivity {
         ArgumentChecking.lowerBound(startSec, 0.0, "startSec");
         ArgumentChecking.lowerBound(durationSec, 0.0, "durationSec");
         ArgumentChecking.withinBounds(overheadPerc, 0.0, 100.0, "oveheadPerc");
-        
+
         this.name = name;
         this.startSec = startSec;
         this.durationSec = durationSec;
         this.stw = stw;
         this.overheadPerc = overheadPerc;
     }
-    
+
 }

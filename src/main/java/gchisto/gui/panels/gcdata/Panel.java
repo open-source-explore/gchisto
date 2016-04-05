@@ -27,7 +27,6 @@ import gchisto.gctrace.GCTrace;
 import gchisto.gui.utils.TabbedPane;
 
 /**
- *
  * @author tony
  */
 public class Panel extends TabbedPane<DataPanel> {
@@ -45,5 +44,5 @@ public class Panel extends TabbedPane<DataPanel> {
     public String getPanelName() {
         return "GC Data";
     }
-    
+
 }

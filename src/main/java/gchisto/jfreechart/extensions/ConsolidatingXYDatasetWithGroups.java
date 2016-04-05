@@ -23,12 +23,13 @@
  */
 package gchisto.jfreechart.extensions;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.jfree.data.DomainOrder;
 import org.jfree.data.general.AbstractDataset;
 import org.jfree.data.general.DatasetChangeEvent;
 import org.jfree.data.xy.XYDataset;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This is an <tt>XYDataset</tt>, the <tt>DatasetWithGroups</tt> flavor, that
@@ -44,7 +45,7 @@ import org.jfree.data.xy.XYDataset;
  * value, and the x-value of their items should start from 0 and be in
  * ascending order.
  * </ul>
- *
+ * <p/>
  * In the consolidating dataset, each series corresponds to each child
  * dataset and the y-value for each series is the value for the highest
  * series. The resulting dataset actually has twice the number of items
@@ -52,12 +53,11 @@ import org.jfree.data.xy.XYDataset;
  * For every item in the child dataset, the consolidating dataset generates
  * two items, one for the beginning and one for the end of the [x, x + xStep]
  * range.
- *
+ * <p/>
  * The consolidating dataset is used in the
  * <tt>gchisto.gui.panels.gcdistribution</tt> package.
  *
  * @author Tony Printezis
- *
  * @see org.jfree.data.xy.XYDataset
  * @see gchisto.jfreechart.extensions.DatasetWithGroups
  * @see gchisto.jfreechart.extensions.XYDatasetWithGroups
@@ -65,39 +65,39 @@ import org.jfree.data.xy.XYDataset;
  */
 public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
         implements XYDatasetWithGroups {
-    
+
     /**
      * The names of children datasets.
      */
     final private List<String> names = new ArrayList<String>();
-    
+
     /**
      * The children datasets.
      */
     final private List<XYDatasetWithGroups> datasets = new ArrayList<XYDatasetWithGroups>();
-    
+
     /**
      * The number of items in the most populous series for all children datasets.
      */
     final private List<Integer> maxCounts = new ArrayList<Integer>();
-    
+
     /**
      * The increment for the x-axis values.
      */
     final private double xStep;
-    
+
     /**
      * An array with one entry per GC activity in the GC trace that
      * dictates whether that GC activity is active (i.e., whether
      * it will be displayed in the chart).
      */
     private boolean active[];
-    
+
     /**
      * The names of the groups that all children datasetes have.
      */
     private String groupNames[];
-    
+
     /**
      * It returns the number of items in the most populous series
      * in the dataset.
@@ -116,7 +116,7 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
         }
         return max;
     }
-    
+
     /**
      * It iterates over the children datasets and updates the maximum item
      * number of the most populous series in each dataset.
@@ -127,7 +127,7 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
             maxCounts.set(i, calculateMaxCount(dataset));
         }
     }
-    
+
     /**
      * It returns the order of the domain axis (i.e., the x-axis).
      *
@@ -136,7 +136,7 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
     public DomainOrder getDomainOrder() {
         return DomainOrder.ASCENDING;
     }
-    
+
     /**
      * It returns the number of series (e.g., children datasets) in
      * the dataset.
@@ -146,7 +146,7 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
     public int getSeriesCount() {
         return datasets.size();
     }
-    
+
     /**
      * It returns the series key (e.g., the name of the child dataset)
      * of the given index.
@@ -156,10 +156,10 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
      */
     public Comparable getSeriesKey(int series) {
         assert 0 <= series && series < names.size();
-        
+
         return names.get(series);
     }
-    
+
     /**
      * It returns the series of the given series key (e.g., the index of
      * the child dataset with the given name).
@@ -169,10 +169,10 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
      */
     public int indexOf(Comparable seriesKey) {
         assert seriesKey instanceof String;
-        
+
         return names.indexOf(seriesKey);
     }
-    
+
     /**
      * It returns the number of items in the given series (e.g., the given
      * child dataset). This corresponds to twice the number of items in the
@@ -185,62 +185,62 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
         assert 0 <= series && series < datasets.size();
         return maxCounts.get(series) * 2;
     }
-    
+
     /**
      * It returns the x-value for a given data point of the given series.
      *
      * @param series The series of the data point.
-     * @param item The index of the given data point.
+     * @param item   The index of the given data point.
      * @return The x-value for a given data point of the given series.
      */
     public Number getX(int series, int item) {
         assert 0 <= series && series < datasets.size();
-        
+
         return getXValue(series, item);
     }
-    
+
     /**
      * It returns the x-value for a given data point of the given series.
      *
      * @param series The series of the data point.
-     * @param item The index of the given data point.
+     * @param item   The index of the given data point.
      * @return The x-value for a given data point of the given series.
      */
     public double getXValue(int series, int item) {
         assert 0 <= series && series < datasets.size();
-        
+
         return ((double) ((item + 1) / 2)) * xStep;
     }
-    
+
     /**
      * It returns the y-value for a given data point of the given series.
      *
      * @param series The series of the data point.
-     * @param item The index of the given data point.
+     * @param item   The index of the given data point.
      * @return The y-value for a given data point of the given series.
      */
     public Number getY(int series, int item) {
         assert 0 <= series && series < datasets.size();
-        
+
         return getYValue(series, item);
     }
-    
+
     /**
      * It returns the y-value for a given data point of the given series.
      *
      * @param series The series of the data point.
-     * @param item The index of the given data point.
+     * @param item   The index of the given data point.
      * @return The y-value for a given data point of the given series.
      */
     public double getYValue(int series, int item) {
         assert 0 <= series && series < datasets.size();
-        
+
         XYDataset dataset = datasets.get(series);
         int index = dataset.getSeriesCount() - 1;
         assert index >= 0;
         return dataset.getYValue(index, item / 2);
     }
-    
+
     /**
      * It returns the number of groups in the dataset, e.g., the number
      * of groups in the children dataset (which should be the same for all
@@ -251,7 +251,7 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
     public int getGroupCount() {
         return groupNames.length;
     }
-    
+
     /**
      * It returns the name of the group with the given index (which should
      * be the same for all children datasets).
@@ -261,29 +261,29 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
      */
     public String getGroupName(int group) {
         assert 0 <= group && group < groupNames.length;
-        
+
         return groupNames[group];
     }
-    
+
     /**
      * It determines whether the group with the given index is active (and
      * it should have the same state in all children datasets).
      *
      * @param group The index of the group to be determined whether it is
-     * active.
+     *              active.
      * @return Whether the group with the given index is active.
      */
     public boolean isGroupActive(int group) {
         assert 0 <= group && group < active.length;
-        
+
         boolean value = active[group];
         for (XYDatasetWithGroups dataset : datasets) {
             assert dataset.isGroupActive(group) == value;
         }
-        
+
         return value;
     }
-    
+
     /**
      * It sets whether the group with the given index is active or not and
      * propagates this value to all children datasets.
@@ -293,7 +293,7 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
      */
     public void setGroupActive(int group, boolean value) {
         assert 0 <= group && group < active.length;
-        
+
         active[group] = value;
         for (XYDatasetWithGroups dataset : datasets) {
             dataset.setGroupActive(group, value);
@@ -301,18 +301,18 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
         recalculateMaxCounts();
         notifyListeners(new DatasetChangeEvent(this, this));
     }
-    
+
     /**
      * It adds a new child dataset to this dataset and associates it with a
      * name.
      *
-     * @param name The name of the child dataset to be added.
+     * @param name    The name of the child dataset to be added.
      * @param dataset The child dataset to be added.
      */
     public void add(String name, XYDatasetWithGroups dataset) {
         assert names.size() == datasets.size();
         assert datasets.size() == maxCounts.size();
-        
+
         names.add(name);
         datasets.add(dataset);
         maxCounts.add(calculateMaxCount(dataset));
@@ -334,11 +334,11 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
                 assert groupNames[i].equals(dataset.getGroupName(i));
             }
         }
-        
+
         assert names.size() == datasets.size();
         assert datasets.size() == maxCounts.size();
     }
-    
+
     /**
      * It creates a new instance of this dataset.
      *
@@ -347,5 +347,5 @@ public class ConsolidatingXYDatasetWithGroups extends AbstractDataset
     public ConsolidatingXYDatasetWithGroups(double xStep) {
         this.xStep = xStep;
     }
-    
+
 }

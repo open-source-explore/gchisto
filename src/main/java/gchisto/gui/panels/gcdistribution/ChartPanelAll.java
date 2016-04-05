@@ -26,14 +26,15 @@ package gchisto.gui.panels.gcdistribution;
 import gchisto.gui.utils.AbstractChartPanel;
 import gchisto.gui.utils.GroupActivatingPanel;
 import gchisto.jfreechart.extensions.XYDatasetWithGroups;
-import java.awt.BorderLayout;
-import javax.swing.JSplitPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
- * A panel that contains a bar chart that compares the GC distribution 
+ * A panel that contains a bar chart that compares the GC distribution
  * of all GC traces. This panel will be added to the tabbed pane of the main
  * GC distribution panel.
  *
@@ -65,9 +66,9 @@ public class ChartPanelAll extends AbstractChartPanel {
     /**
      * It creates a new instance of this panel and adds a chart into it.
      *
-     * @param title The name of the metric.
+     * @param title    The name of the metric.
      * @param unitName The name of the unit of the metric.
-     * @param dataset The dataset that will provide the values for the chart.
+     * @param dataset  The dataset that will provide the values for the chart.
      */
     public ChartPanelAll(
             String title, String unitName,

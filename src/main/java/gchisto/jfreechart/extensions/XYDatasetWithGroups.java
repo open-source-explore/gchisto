@@ -30,7 +30,6 @@ import org.jfree.data.xy.XYDataset;
  * interface.
  *
  * @author Tony Printezis
- *
  * @see org.jfree.data.xy.XYDataset
  * @see gchisto.jfreechart.extensions.DatasetWithGroups
  */

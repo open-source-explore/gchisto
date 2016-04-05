@@ -28,25 +28,25 @@ package gchisto.utils.errorchecking;
  * method.
  *
  * @author Tony Printezis
- * @see    gchisto.utils.errorchecking.ArgumentChecking
+ * @see gchisto.utils.errorchecking.ArgumentChecking
  */
 public class IllegalArgumentException extends RuntimeException {
-    
+
     /**
      * Private constructor so that it is not called.
      */
     private IllegalArgumentException() {
     }
-    
+
     /**
      * It creates a new instance of this exception and attaches the given
      * message to it.
      *
      * @param str The message to be associated with the new instance
-     * of this exception.
+     *            of this exception.
      */
     public IllegalArgumentException(String str) {
         super("Illegal Argument : " + str);
     }
-    
+
 }

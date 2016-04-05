@@ -27,43 +27,43 @@ package gchisto.gctrace;
  * A listener for changes in a GC trace set.
  *
  * @author Tony Printezis
- * @see    gchisto.gctraceset.GCTraceSet
+ * @see gchisto.gctraceset.GCTraceSet
  */
 public interface GCTraceSetListener {
-    
+
     /**
      * Called after a GC trace has been added to the GC trace set.
      *
      * @param gcTrace The GC trace added to the GC trace set.
      */
     public void gcTraceAdded(GCTrace gcTrace);
-    
+
     /**
      * Called after a GC trace has been renamed in the GC trace set.
      *
      * @param gcTrace The GC trace renamed in the GC trace set.
      */
     public void gcTraceRenamed(GCTrace gcTrace);
-    
+
     /**
      * Called after a GC trace has been removed from the GC trace set.
      *
      * @param gcTrace The GC trace removed from the GC trace set.
      */
     public void gcTraceRemoved(GCTrace gcTrace);
-    
+
     /**
      * Called after a GC trace has been moved up in the GC trace set.
      *
      * @param gcTrace The GC trace moved up in the GC trace set.
      */
     public void gcTraceMovedUp(GCTrace gcTrace);
-    
+
     /**
      * Called after a GC trace has been moved down in the GC trace set.
      *
      * @param gcTrace The GC trace moved down in the GC trace set.
      */
     public void gcTraceMovedDown(GCTrace gcTrace);
-    
+
 }

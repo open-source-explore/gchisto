@@ -24,8 +24,8 @@
 package gchisto.utils;
 
 import gchisto.utils.errorchecking.ArgumentChecking;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A convenience class that includes array-related utility methods.
@@ -40,20 +40,20 @@ public class ArrayUtils {
      * array, in the same order.
      *
      * @param array The array whose contents will be used to populate
-     * the new array list.
+     *              the new array list.
      * @return An ArrayList that contains the elements of the given
      * array, in the same order.
      */
     static public ArrayList<String> generateArrayList(String[] array) {
         ArgumentChecking.notNull(array, "array");
-        
+
         ArrayList<String> list = new ArrayList<String>(array.length);
         for (int i = 0; i < array.length; ++i) {
             list.add(i, array[i]);
         }
         return list;
     }
-    
+
     /**
      * Private constructor to avoid the instantiation of this class.
      */

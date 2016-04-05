@@ -26,21 +26,20 @@ package gchisto.gctracegenerator.file;
 import gchisto.gctracegenerator.GCTraceGeneratorForFiles;
 import gchisto.gctracegenerator.GCTraceGeneratorListener;
 import gchisto.utils.errorchecking.ArgumentChecking;
+
+import javax.swing.*;
 import java.io.File;
-import javax.swing.JComponent;
-import javax.swing.JFileChooser;
 
 /**
- *
  * @author tony
  */
 abstract public class FileGCTraceGenerator implements GCTraceGeneratorForFiles {
 
     static private File currDir = new File(".");
-    
+
     protected File getFileFromDialog(JComponent component) {
         assert component != null;
-        
+
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(currDir);
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -53,27 +52,24 @@ abstract public class FileGCTraceGenerator implements GCTraceGeneratorForFiles {
             return null;
         }
     }
-    
+
     abstract protected FileGCTrace newFileGCTrace(File file);
-    
-    public void createNewGCTrace(File file,
-            GCTraceGeneratorListener listener) {
+
+    public void createNewGCTrace(File file, GCTraceGeneratorListener listener) {
         FileGCTrace gcTrace = newFileGCTrace(file);
         gcTrace.init(listener);
         currDir = file;
     }
-    
-    public void createNewGCTrace(JComponent component,
-            GCTraceGeneratorListener listener) {
+
+    public void createNewGCTrace(JComponent component, GCTraceGeneratorListener listener) {
         ArgumentChecking.notNull(component, "component");
-        
         File file = getFileFromDialog(component);
         if (file != null) {
             createNewGCTrace(file, listener);
         }
     }
-    
+
     public FileGCTraceGenerator() {
     }
-    
+
 }

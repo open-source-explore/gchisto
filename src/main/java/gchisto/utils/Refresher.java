@@ -24,7 +24,6 @@
 package gchisto.utils;
 
 /**
- *
  * @author tony
  */
 public class Refresher {
@@ -36,6 +35,7 @@ public class Refresher {
             completeTask();
         }
     }
+
     final private WorkerThread workerThread;
     final private RefresherCallback callback;
     boolean inProgress = false;

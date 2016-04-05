@@ -28,6 +28,7 @@ import gchisto.gctracegenerator.file.GCLogFileReaderThrottle;
 import gcparser.GCDataStore;
 import gcparser.GCMetric;
 import gcparser.GCParserDriver;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +36,6 @@ import java.util.BitSet;
 import java.util.List;
 
 /**
- *
  * @author tony
  */
 public class GCLogFileReader
@@ -73,8 +73,8 @@ public class GCLogFileReader
         }
 
         public MetricData(String name,
-                ArrayList<Double> times,
-                ArrayList<Double> data) {
+                          ArrayList<Double> times,
+                          ArrayList<Double> data) {
             assert times.size() == data.size();
 
             this.name = name;
@@ -129,6 +129,7 @@ public class GCLogFileReader
             return ret;
         }
     }
+
     final private String[] SHARED_ACTIVITIES = {"Young GC", "Full GC"};
     final private List<String> gcActivityNames = new ArrayList<String>();
 

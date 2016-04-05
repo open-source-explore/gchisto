@@ -26,7 +26,6 @@ package gchisto.gui.panels.gcstats;
 import gchisto.jfreechart.extensions.ChangingCategoryDatasetWithTTG;
 import gchisto.jfreechart.extensions.ChartLocker;
 import gchisto.jfreechart.extensions.SwappingCategoryDatasetWithTTG;
-import java.awt.BorderLayout;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -36,8 +35,10 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 
+import java.awt.*;
+
 /**
- * A panel that contains a chart that shows the breakdown of a particular 
+ * A panel that contains a chart that shows the breakdown of a particular
  * metric over all GC activities. This panel should be used when more than
  * one GC traces have been loaded. The chart is implemented as a stacked bar
  * chart, one bar per GC trace. Each such panel will be added to the tabbed
@@ -67,7 +68,7 @@ public class BreakdownChartPanelMulti extends GCStatsChartPanel {
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         CategoryItemRenderer renderer = plot.getRenderer();
         renderer.setToolTipGenerator(dataset);
-        
+
         mainPanel().add(BorderLayout.CENTER, new ChartPanel(chart));
     }
 
@@ -86,10 +87,10 @@ public class BreakdownChartPanelMulti extends GCStatsChartPanel {
 
     /**
      * It creates a new instance of this panel and adds a chart into it.
-     * 
-     * @param title The name of the metric name.
+     *
+     * @param title    The name of the metric name.
      * @param unitName The name of the unit of the metric.
-     * @param dataset The dataset that will provide the values for the chart.
+     * @param dataset  The dataset that will provide the values for the chart.
      */
     public BreakdownChartPanelMulti(
             String title, String unitName,

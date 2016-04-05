@@ -26,7 +26,6 @@ package gchisto.utils;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- *
  * @author tony
  */
 public class Locker {
@@ -42,7 +41,7 @@ public class Locker {
 
     protected void unlock() {
         assert lock.isHeldByCurrentThread();
-        
+
         assert count > 0;
         count -= 1;
         lock.unlock();

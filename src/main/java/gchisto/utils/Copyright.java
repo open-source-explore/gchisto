@@ -24,34 +24,33 @@
 package gchisto.utils;
 
 /**
- *
  * @author Tony Printezis
  */
 public class Copyright {
 
     static final private String COPYRIGHT_TEXT =
             "Copyright (c) 2007 Sun Microsystems, Inc., 4150 Network Circle, \n" +
-            "Santa Clara, California 95054, USA All rights reserved.\n" +
-            "\n" +
-            "U.S. Government Rights - Commercial software. Government users are\n" +
-            "subject to the Sun Microsystems, Inc. standard license agreement and\n" +
-            "applicable provisions of the FAR and its supplements.\n" +
-            "\n" +
-            "Use is subject to license terms.\n" +
-            "\n" +
-            "Sun, Sun Microsystems, the Sun logo, Java and NetBeans are trademarks\n" +
-            "or registered trademarks of Sun Microsystems, Inc. in the U.S. and\n" +
-            "other countries.\n" +
-            "\n" +
-            "This product is covered and controlled by U.S. Export Control laws and\n" +
-            "may be subject to the export or import laws in other\n" +
-            "countries. Nuclear, missile, chemical biological weapons or nuclear\n" +
-            "maritime end uses or end users, whether direct or indirect, are\n" +
-            "strictly prohibited. Export or reexport to countries subject to\n" +
-            "U.S. embargo or to entities identified on U.S. export exclusion lists,\n" +
-            "including, but not limited to, the denied persons and specially\n" +
-            "designated nationals lists is strictly prohibited.\n";
-    
+                    "Santa Clara, California 95054, USA All rights reserved.\n" +
+                    "\n" +
+                    "U.S. Government Rights - Commercial software. Government users are\n" +
+                    "subject to the Sun Microsystems, Inc. standard license agreement and\n" +
+                    "applicable provisions of the FAR and its supplements.\n" +
+                    "\n" +
+                    "Use is subject to license terms.\n" +
+                    "\n" +
+                    "Sun, Sun Microsystems, the Sun logo, Java and NetBeans are trademarks\n" +
+                    "or registered trademarks of Sun Microsystems, Inc. in the U.S. and\n" +
+                    "other countries.\n" +
+                    "\n" +
+                    "This product is covered and controlled by U.S. Export Control laws and\n" +
+                    "may be subject to the export or import laws in other\n" +
+                    "countries. Nuclear, missile, chemical biological weapons or nuclear\n" +
+                    "maritime end uses or end users, whether direct or indirect, are\n" +
+                    "strictly prohibited. Export or reexport to countries subject to\n" +
+                    "U.S. embargo or to entities identified on U.S. export exclusion lists,\n" +
+                    "including, but not limited to, the denied persons and specially\n" +
+                    "designated nationals lists is strictly prohibited.\n";
+
     static public String text() {
         return COPYRIGHT_TEXT;
     }

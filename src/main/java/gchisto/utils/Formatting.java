@@ -26,16 +26,16 @@ package gchisto.utils;
 import java.text.NumberFormat;
 
 /**
- * A convenience class that includes methods that format numbers into 
+ * A convenience class that includes methods that format numbers into
  * frequently-used formats. Two ways that do the formatting are provided.
  * One is to simply call a method that does the formatting. The other
  * is to retrieve a instance of a class that implements that <tt>Formatter</tt>
  * interface which can also do the formatting. All methods are static and this
- * class cannot be instantiated. 
+ * class cannot be instantiated.
  *
  * @author Tony Printezis
- * @see    gchisto.utils.Formatter
- * @see    java.text.NumberFormat
+ * @see gchisto.utils.Formatter
+ * @see java.text.NumberFormat
  */
 public class Formatting {
 
@@ -65,6 +65,7 @@ public class Formatting {
         double val = number.doubleValue();
         return Double.isNaN(val) || Double.isInfinite(val);
     }
+
     /**
      * A <tt>Formatter</tt> instance that formats doubles.
      */
@@ -151,7 +152,6 @@ public class Formatting {
      * integral digits
      *
      * @return A double formatter.
-     *
      * @see gchisto.utils.Formatting#formatDouble(double)
      * @see #DOUBLE_FRACTION_DIGITS
      */
@@ -165,20 +165,18 @@ public class Formatting {
      *
      * @param number The number to be formatted.
      * @return The given number formatted.
-     *
      * @see gchisto.utils.Formatting#doubleFormatter()
      * @see #DOUBLE_FRACTION_DIGITS
      */
     static public String formatDouble(double number) {
         return doubleFormatter().format(number);
     }
-    
+
     /**
      * It returns a <tt>Formatter</tt> that formats an integer so that commas
      * separate groups of three integral digits.
      *
      * @return An integer formatter.
-     *
      * @see gchisto.utils.Formatting#formatInt(int)
      */
     static public Formatter intFormatter() {
@@ -208,7 +206,6 @@ public class Formatting {
      * integral digits.
      *
      * @return A percentage formatter.
-     *
      * @see gchisto.utils.Formatting#formatPerc(double)
      * @see #PERC_FRACTION_DIGITS
      */
@@ -222,7 +219,6 @@ public class Formatting {
      *
      * @param percent The percentage to be formatted.
      * @return The given percentage formatted.
-     *
      * @see gchisto.utils.Formatting#percFormatter()
      * @see #PERC_FRACTION_DIGITS
      */
@@ -237,7 +233,6 @@ public class Formatting {
      * the sign (+ or -) will always preceed the number.
      *
      * @return A percentage difference formatter.
-     * 
      * @see gchisto.utils.Formatting#formatPercDiff(double)
      * @see #PERC_FRACTION_DIGITS
      */
@@ -247,13 +242,12 @@ public class Formatting {
 
     /**
      * It formats a percentage difference so that it has exactly 2 fraction
-     * digits and commas separate groups of three integral digits. If the 
+     * digits and commas separate groups of three integral digits. If the
      * given percentage difference is not 0, then the sign (+ or -) will
      * always preceed the number.
      *
      * @param percDiff The percentage difference to be formatted.
      * @return The given percentage difference formatted.
-     * 
      * @see gchisto.utils.Formatting#percDiffFormatter()
      * @see #PERC_FRACTION_DIGITS
      */

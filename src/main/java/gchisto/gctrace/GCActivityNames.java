@@ -24,6 +24,7 @@
 package gchisto.gctrace;
 
 import gchisto.utils.errorchecking.ArgumentChecking;
+
 import java.util.ArrayList;
 
 /**
@@ -34,11 +35,11 @@ import java.util.ArrayList;
  * increase as new GC activity names are added to the map.
  *
  * @author Tony Printezis
- * @see    gchisto.gctraceset.GCTrace
- * @see    gchisto.gctraceset.GCTraceSet
+ * @see gchisto.gctraceset.GCTrace
+ * @see gchisto.gctraceset.GCTraceSet
  */
 public class GCActivityNames extends ArrayList<String> {
-    
+
     /**
      * It returns an array that contains all the unique strings of the GC
      * activity names that have been added to this map. The index of each
@@ -50,22 +51,22 @@ public class GCActivityNames extends ArrayList<String> {
     public String[] getNames() {
         return toArray(new String[size()]);
     }
-    
+
     /**
      * It iterates over the GC activity names of the parameter and, any of
      * them which do not exist in this map, it will add them.
      *
      * @param gcActivityNames The GC activity names that will be merged
-     * with this map.
+     *                        with this map.
      */
     public void merge(GCActivityNames gcActivityNames) {
         ArgumentChecking.notNull(gcActivityNames, "gcActivityNames");
-        
+
         for (String activityName : gcActivityNames.getNames()) {
             if (!contains((activityName))) {
                 add(activityName);
             }
         }
     }
-    
+
 }

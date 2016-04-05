@@ -27,46 +27,46 @@ import gchisto.gctrace.GCTrace;
 import gchisto.gctracegenerator.GCTraceGeneratorListener;
 import gchisto.gctracegenerator.NopGCTraceGeneratorListener;
 import gchisto.utils.MessageReporter;
+
 import java.io.File;
 
 /**
- *
  * @author tony
  */
 public class DynamicFileGCTrace extends FileGCTrace {
 
     volatile private boolean playing = false;
-    
+
     volatile private boolean shouldPause = false;
     volatile private boolean paused = false;
-    
+
     volatile private boolean shouldFinish = false;
-    
+
     private PlaybackFrame frame = new PlaybackFrame(this);
-    
+
     abstract private class AbstractThrottle implements GCLogFileReaderThrottle {
 
         static final private int SLEEP_MS = 10;
-        
+
         protected double startTimeSec;
         protected double prevStartSec;
-        
+
         protected int totalCount = 0;
-        
+
         private double nowSec() {
             return (double) System.currentTimeMillis() / 1000.0;
         }
-        
+
         protected void updateStatus() {
             setStatus(String.format("%d events in %1.2f secs",
                     totalCount, prevStartSec - startTimeSec));
         }
-        
+
         protected void startTimer() {
             startTimeSec = nowSec();
             prevStartSec = startTimeSec;
         }
-        
+
         protected void waitUntil(double timeSec) {
             double nowSec = nowSec();
             while (nowSec < timeSec && !shouldFinish) {
@@ -79,59 +79,59 @@ public class DynamicFileGCTrace extends FileGCTrace {
             }
             prevStartSec = nowSec;
         }
-        
+
         protected void stopTimer() {
             double nowSec = nowSec();
             prevStartSec = nowSec;
-            
+
             setStatus(String.format("Completed %d events in %1.2f secs",
                     totalCount,
                     prevStartSec - startTimeSec));
         }
-        
+
         public void started() {
             startTimer();
             updateStatus();
         }
-        
+
         public boolean shouldContinue() {
             return DynamicFileGCTrace.this.shouldContinue();
         }
-        
+
         public void finished() {
             stopTimer();
         }
-        
+
     }
-    
+
     private class RealFileReaderThrottle extends AbstractThrottle {
-        
+
         private int speed;
         private double speedMult;
-        
+
         public void beforeAddingGCActivity(double startSec) {
             double timeSec = startTimeSec + startSec / speedMult;
             waitUntil(timeSec);
             maybePause();
         }
-        
+
         public void afterAddingGCActivity(double startSec) {
             ++totalCount;
             updateStatus();
         }
-        
+
         public RealFileReaderThrottle(int speedup) {
             this.speed = speedup;
             this.speedMult = (double) speedup / 100.0;
         }
-        
+
     }
-    
+
     private class FastFileReaderThrottle extends AbstractThrottle {
-        
+
         private int eventNum;
         private double durationSec;
-        
+
         public void beforeAddingGCActivity(double startSec) {
             if (totalCount > 0 && totalCount % eventNum == 0) {
                 double timeSec = startTimeSec +
@@ -140,47 +140,47 @@ public class DynamicFileGCTrace extends FileGCTrace {
             }
             maybePause();
         }
-        
+
         public void afterAddingGCActivity(double startSec) {
             totalCount += 1;
             if (totalCount % eventNum == 0) {
                 updateStatus();
             }
         }
-        
+
         public FastFileReaderThrottle(int eventNum, double durationSec) {
             this.eventNum = eventNum;
             this.durationSec = durationSec;
         }
-        
+
     }
-    
+
     private class FinishListener extends NopGCTraceGeneratorListener {
 
         public void finished(GCTrace gcTrace) {
             DynamicFileGCTrace.this.finished();
         }
-        
+
     }
-    
+
     boolean playing() {
         return playing;
     }
-    
+
     boolean paused() {
         return paused;
     }
-    
+
     private void maybePause() {
         assert playing;
         assert !paused;
-        
+
         if (shouldPause) {
             paused = true;
             shouldPause = false;
             frame.setPaused();
-            
-            synchronized(this) {
+
+            synchronized (this) {
                 while (paused && !shouldFinish) {
                     try {
                         wait();
@@ -198,25 +198,25 @@ public class DynamicFileGCTrace extends FileGCTrace {
             }
         }
     }
-    
+
     void playReal(int speedup) {
         play(new RealFileReaderThrottle(speedup));
     }
-    
+
     void playFast(int eventNum, double durationSec) {
         play(new FastFileReaderThrottle(eventNum, durationSec));
     }
-    
+
     private boolean shouldContinue() {
         return !shouldFinish;
     }
-    
+
     void play(GCLogFileReaderThrottle throttle) {
         assert !playing;
         assert !shouldPause;
         assert !paused;
         assert !shouldFinish;
-        
+
         playing = true;
         frame.setPlaying();
         readFileConcurrently(new FinishListener(), throttle);
@@ -227,7 +227,7 @@ public class DynamicFileGCTrace extends FileGCTrace {
         assert !shouldPause;
         assert !paused;
         assert !shouldFinish;
-        
+
         shouldPause = true;
     }
 
@@ -236,19 +236,19 @@ public class DynamicFileGCTrace extends FileGCTrace {
         assert !shouldPause;
         assert paused;
         assert !shouldFinish;
-        
+
         paused = false;
-        synchronized(this) {
+        synchronized (this) {
             notifyAll();
         }
     }
-    
+
     void shouldFinish() {
         assert playing;
         assert !shouldFinish;
 
         shouldFinish = true;
-        synchronized(this) {
+        synchronized (this) {
             notifyAll();
         }
     }
@@ -257,19 +257,19 @@ public class DynamicFileGCTrace extends FileGCTrace {
         assert playing;
         assert !shouldPause;
         assert !paused;
-        
+
         playing = false;
         shouldFinish = false;
-        synchronized(this) {
+        synchronized (this) {
             notifyAll();
         }
         frame.setStopped();
     }
-    
+
     private void setStatus(String status) {
         frame.setStatus(status);
     }
-    
+
     public void init(GCTraceGeneratorListener listener) {
         listener.started();
         MessageReporter.showMessage("Added dynamic file " + file.getAbsolutePath());
@@ -279,11 +279,11 @@ public class DynamicFileGCTrace extends FileGCTrace {
     public void afterAddingToGCTraceSet() {
         frame.setVisible(true);
     }
-    
+
     public void beforeRemovingFromGCTraceSet() {
         if (playing) {
             shouldFinish();
-            synchronized(this) {
+            synchronized (this) {
                 while (playing) {
                     try {
                         wait();

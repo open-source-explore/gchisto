@@ -24,11 +24,10 @@
 package gchisto.jfreechart.extensions;
 
 /**
- *
  * @author tony
  */
 public interface ChangingDataset {
 
     public void datasetChanged();
-    
+
 }

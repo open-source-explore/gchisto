@@ -27,7 +27,6 @@ import org.jfree.data.general.AbstractDataset;
 import org.jfree.data.general.DatasetChangeEvent;
 
 /**
- *
  * @author tony
  */
 abstract public class AbstractChangingDataset extends AbstractDataset

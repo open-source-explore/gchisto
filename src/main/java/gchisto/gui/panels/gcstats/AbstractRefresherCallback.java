@@ -26,7 +26,6 @@ package gchisto.gui.panels.gcstats;
 import gchisto.utils.RefresherCallback;
 
 /**
- *
  * @author tony
  */
 abstract public class AbstractRefresherCallback implements RefresherCallback {
@@ -39,5 +38,5 @@ abstract public class AbstractRefresherCallback implements RefresherCallback {
     }
 
     abstract public void refresh();
-    
+
 }

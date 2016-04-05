@@ -26,13 +26,12 @@ package gchisto.gui.utils;
 import gchisto.jfreechart.extensions.DatasetWithGroups;
 import gchisto.utils.Locker;
 import gchisto.utils.errorchecking.ShouldNotReachHereException;
-import java.awt.Component;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JTable;
+
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
+import java.awt.*;
 
 /**
  * A panel that shows a series of group names and allows the user to active /
@@ -43,7 +42,6 @@ import javax.swing.table.TableCellRenderer;
  * charts. Such a group can be a JFreeChart series, an abstraction which
  * appears in a lot of the datasets. However, the interface is more general
  * to apply to other situations as well.
- *
  *
  * @author Tony Printezis
  * @see gchisto.jfreechart.extensions.DatasetWithGroups
@@ -85,14 +83,14 @@ public class GroupActivatingPanel extends javax.swing.JPanel {
         /**
          * It returns a new label for a particular table cell.
          *
-         * @param table The table in which the label will be included.
-         * @param value A string representing the text for the label.
+         * @param table      The table in which the label will be included.
+         * @param value      A string representing the text for the label.
          * @param isSelected Whether the label is selected or not; currently
-         * this is ignored.
-         * @param hasFocus Whether the label has focus or not; currently
-         * this is ignored.
-         * @param row The row in which the label will be added.
-         * @param col The column in which the label will be added.
+         *                   this is ignored.
+         * @param hasFocus   Whether the label has focus or not; currently
+         *                   this is ignored.
+         * @param row        The row in which the label will be added.
+         * @param col        The column in which the label will be added.
          * @return A new label for a particular table cell.
          */
         public Component getTableCellRendererComponent(
@@ -121,15 +119,15 @@ public class GroupActivatingPanel extends javax.swing.JPanel {
         /**
          * It returns a new check box for a particular table cell.
          *
-         * @param table The table in which the check box will be included.
-         * @param value A boolean representing whether the check box should
-         * be selected or not.
+         * @param table      The table in which the check box will be included.
+         * @param value      A boolean representing whether the check box should
+         *                   be selected or not.
          * @param isSelected Whether the check box is selected or not;
-         * currently this is ignored.
-         * @param hasFocus Whether the check box has focus or not; currently
-         * this is ignored.
-         * @param row The row in which the check box will be added.
-         * @param col The column in which the check box will be added.
+         *                   currently this is ignored.
+         * @param hasFocus   Whether the check box has focus or not; currently
+         *                   this is ignored.
+         * @param row        The row in which the check box will be added.
+         * @param col        The column in which the check box will be added.
          * @return A new check box for a particular table cell.
          */
         public Component getTableCellRendererComponent(
@@ -181,7 +179,7 @@ public class GroupActivatingPanel extends javax.swing.JPanel {
          * It returns the column name for the specified column.
          *
          * @param columnIndex The index of the column whose header will
-         * be returned.
+         *                    be returned.
          * @return The column name for the specified column.
          */
         public String getColumnName(int columnIndex) {
@@ -192,7 +190,7 @@ public class GroupActivatingPanel extends javax.swing.JPanel {
          * It returns the class of the table cells in the specified column.
          *
          * @param columnIndex The index of the column whose content class
-         * will be returned.
+         *                    will be returned.
          * @return The class of the table cells in the specified column.
          */
         public Class<?> getColumnClass(int columnIndex) {
@@ -202,7 +200,7 @@ public class GroupActivatingPanel extends javax.swing.JPanel {
         /**
          * It determines whether the specified table cell is editable.
          *
-         * @param rowIndex The row index of the specified table cell.
+         * @param rowIndex    The row index of the specified table cell.
          * @param columnIndex The column index of the specified table cell.
          * @return Whether the specified table cell is editable.
          */
@@ -213,7 +211,7 @@ public class GroupActivatingPanel extends javax.swing.JPanel {
         /**
          * It returns the value of the specified table cell.
          *
-         * @param rowIndex The row index of the specified table cell.
+         * @param rowIndex    The row index of the specified table cell.
          * @param columnIndex The column index of the specified table cell.
          * @return The value of the specified table cell.
          */
@@ -231,8 +229,8 @@ public class GroupActivatingPanel extends javax.swing.JPanel {
         /**
          * It sets a new value for a particular table cell.
          *
-         * @param value The new value for the specified table cell.
-         * @param rowIndex The row index of the specified table cell.
+         * @param value       The new value for the specified table cell.
+         * @param rowIndex    The row index of the specified table cell.
          * @param columnIndex The column index of the specified table cell.
          */
         public void setValueAt(Object value, final int rowIndex, int columnIndex) {
@@ -253,13 +251,13 @@ public class GroupActivatingPanel extends javax.swing.JPanel {
     public void groupAdded() {
         model.fireTableStructureChanged();
     }
-    
+
     /**
      * It creates a new instance of the group activating / de-acticating panel.
      *
      * @param dataset The dataset that holds whether the groups are
-     * activated / de-activated and that will be notified when changes
-     * are made.
+     *                activated / de-activated and that will be notified when changes
+     *                are made.
      */
     public GroupActivatingPanel(DatasetWithGroups dataset, Locker locker) {
         this.dataset = dataset;
@@ -278,7 +276,8 @@ public class GroupActivatingPanel extends javax.swing.JPanel {
         table.setModel(model);
     }
 
-    /** This method is called from within the constructor to
+    /**
+     * This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.
@@ -289,29 +288,30 @@ public class GroupActivatingPanel extends javax.swing.JPanel {
         table = new javax.swing.JTable();
 
         table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+                new Object[][]{
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null}
+                },
+                new String[]{
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                }
         ));
         tableScrollPane.setViewportView(table);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable table;
     private javax.swing.JScrollPane tableScrollPane;

@@ -26,7 +26,6 @@ package gchisto.jfreechart.extensions;
 import org.jfree.data.category.CategoryDataset;
 
 /**
- *
  * @author tony
  */
 public interface ChangingCategoryDataset

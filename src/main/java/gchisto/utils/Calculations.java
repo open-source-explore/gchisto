@@ -38,80 +38,75 @@ public class Calculations {
      * It returns the percentage 100 * <tt>value</tt> / <tt>max</tt>.
      *
      * @param value The value component of the percentage calculation.
-     * @param max The max value component of the percentage calculation.
+     * @param max   The max value component of the percentage calculation.
      * @return The percentage 100 * <tt>value</tt> / <tt>max</tt>.
-     *
      * @see gchisto.utils.Calculations#perc(double, double)
      * @see gchisto.utils.Calculations#perc(Number, Number)
      */
     static public double perc(int value, int max) {
         return perc((double) value, (double) max);
     }
-    
+
     /**
      * It returns the percentage 100 * <tt>value</tt> / <tt>max</tt>.
      *
      * @param value The value component of the percentage calculation.
-     * @param max The max value component of the percentage calculation.
+     * @param max   The max value component of the percentage calculation.
      * @return The percentage 100 * <tt>value</tt> / <tt>max</tt>.
-     *
      * @see gchisto.utils.Calculations#perc(double, double)
      * @see gchisto.utils.Calculations#perc(int, int)
      */
     static public double perc(Number value, Number max) {
         ArgumentChecking.notNull(value, "value");
         ArgumentChecking.notNull(max, "max");
-        
+
         return perc(value.doubleValue(), max.doubleValue());
     }
-    
+
     /**
      * It returns the percentage 100 * <tt>value</tt> / <tt>max</tt>.
      *
      * @param value The value component of the percentage calculation.
-     * @param max The max value component of the percentage calculation.
+     * @param max   The max value component of the percentage calculation.
      * @return The percentage 100 * <tt>value</tt> / <tt>max</tt>.
-     *
      * @see gchisto.utils.Calculations#perc(int, int)
      * @see gchisto.utils.Calculations#perc(Number, Number)
      */
     static public double perc(double value, double max) {
         return (value / max) * 100.0;
     }
-    
+
     /**
-     * It returns the percentage difference between two values in the 
+     * It returns the percentage difference between two values in the
      * form 100 * (<tt>value</tt> - <tt>base</tt>) / <tt>base</bb>.
      *
      * @param value The value component in the percentage calculation.
-     * @param base The base component in the percentage calculation.
-     * @return The percentage difference between two values in the 
+     * @param base  The base component in the percentage calculation.
+     * @return The percentage difference between two values in the
      * form 100 * (<tt>value</tt> - <tt>base</tt>) / <tt>base</bb>.
-     *
      * @see gchisto.utils.Calculations#percDiff(double, double)
      */
     static public double percDiff(Number value, Number base) {
         ArgumentChecking.notNull(value, "value");
         ArgumentChecking.notNull(base, "base");
-        
+
         return percDiff(value.doubleValue(), base.doubleValue());
     }
-    
+
     /**
-     * It returns the percentage difference between two values in the 
+     * It returns the percentage difference between two values in the
      * form 100 * (<tt>value</tt> - <tt>base</tt>) / <tt>base</bb>.
      *
      * @param value The value component in the percentage calculation.
-     * @param base The base component in the percentage calculation.
-     * @return The percentage difference between two values in the 
+     * @param base  The base component in the percentage calculation.
+     * @return The percentage difference between two values in the
      * form 100 * (<tt>value</tt> - <tt>base</tt>) / <tt>base</bb>.
-     *
      * @see gchisto.utils.Calculations#percDiff(Number, Number)
      */
     static public double percDiff(double value, double base) {
         return perc(value - base, base);
     }
-    
+
     /**
      * Private constructor to avoid the instantiation of this class.
      */

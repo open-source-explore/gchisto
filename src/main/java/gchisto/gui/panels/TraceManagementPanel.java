@@ -23,7 +23,6 @@
  */
 package gchisto.gui.panels;
 
-import gchisto.gui.*;
 import java.io.File;
 
 /**
@@ -32,20 +31,20 @@ import java.io.File;
  * loading, removal, updating, etc.).
  *
  * @author Tony Printezis
- * @see    gchisto.gui.MainFrame
+ * @see gchisto.gui.MainFrame
  */
 public interface TraceManagementPanel extends VisualizationPanel {
-    
+
     /**
      * Load a GC trace after prompting the user for its file name.
-     *
+     * <p/>
      * TODO
      */
     public void addGCTrace();
-    
+
     /**
      * TODO
      */
     public void addGCTrace(File file);
-    
+
 }

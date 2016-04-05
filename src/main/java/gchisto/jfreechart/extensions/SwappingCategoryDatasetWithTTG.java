@@ -24,28 +24,28 @@
 package gchisto.jfreechart.extensions;
 
 import gchisto.utils.errorchecking.ArgumentChecking;
-import java.util.List;
 import org.jfree.data.category.CategoryDataset;
+
+import java.util.List;
 
 /**
  * A <tt>CategoryDataset</tt> that swaps the rows / columns of another
  * <tt>CategoryDataset</tt>.
  *
  * @author Tony Printezis
- *
  * @see gchisto.jfreechart.extensions.DatasetWithGroups
  */
 public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
-            implements ChangingCategoryDatasetWithTTG {
-    
+        implements ChangingCategoryDatasetWithTTG {
+
     /**
      * The source category dataset.
      */
     final private ChangingCategoryDatasetWithTTG dataset;
-    
+
     /**
      * It returns the key of the row with the given index (i.e., the key
-     * of the column with the given index in the source dataset). 
+     * of the column with the given index in the source dataset).
      *
      * @param i The index of the row whose key will be returned.
      * @return The key of the row with the given index.
@@ -55,7 +55,7 @@ public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
     }
 
     /**
-     * It returns the index of the of the row that has the given key 
+     * It returns the index of the of the row that has the given key
      * (i.e., the index of the column that has this particular key in the
      * source dataset).
      *
@@ -64,7 +64,7 @@ public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
      */
     public int getRowIndex(Comparable rowKey) {
         assert rowKey != null;
-        
+
         return dataset.getColumnIndex(rowKey);
     }
 
@@ -80,7 +80,7 @@ public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
 
     /**
      * It returns the key of the column with the given index (i.e., the key
-     * of the row with the given index in the source dataset). 
+     * of the row with the given index in the source dataset).
      *
      * @param i The index of the column whose key will be returned.
      * @return The key of the column with the given index.
@@ -90,7 +90,7 @@ public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
     }
 
     /**
-     * It returns the index of the of the column that has the given key 
+     * It returns the index of the of the column that has the given key
      * (i.e., the index of the row that has this particular key in the
      * source dataset).
      *
@@ -99,7 +99,7 @@ public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
      */
     public int getColumnIndex(Comparable columnKey) {
         assert columnKey != null;
-        
+
         return dataset.getRowIndex(columnKey);
     }
 
@@ -138,7 +138,7 @@ public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
      * row and column (i.e., the value of the source dataset with the row
      * and column swapped).
      *
-     * @param row The row of the value to be looked up.
+     * @param row    The row of the value to be looked up.
      * @param column The column of the value to be looked up.
      * @return The value in the dataset that corresponds to the given
      * row and column.
@@ -146,7 +146,7 @@ public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
     public Number getValue(Comparable row, Comparable column) {
         assert row != null;
         assert column != null;
-        
+
         return dataset.getValue(column, row);
     }
 
@@ -155,7 +155,7 @@ public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
      * row and column (i.e., the value of the source dataset with the row
      * and column swapped).
      *
-     * @param row The row of the value to be looked up.
+     * @param row    The row of the value to be looked up.
      * @param column The column of the value to be looked up.
      * @return The value in the dataset that corresponds to the given
      * row and column.
@@ -163,7 +163,7 @@ public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
     public Number getValue(int row, int column) {
         return dataset.getValue(column, row);
     }
-    
+
     public String generateToolTip(CategoryDataset dataset, int row, int column) {
         assert dataset == this;
         return this.dataset.generateToolTip(this.dataset, column, row);
@@ -177,7 +177,7 @@ public class SwappingCategoryDatasetWithTTG extends AbstractChangingDataset
      */
     public SwappingCategoryDatasetWithTTG(ChangingCategoryDatasetWithTTG dataset) {
         ArgumentChecking.notNull(dataset, "dataset");
-        
+
         this.dataset = dataset;
     }
 

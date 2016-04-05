@@ -28,7 +28,6 @@ import org.jfree.chart.event.ChartProgressEvent;
 import org.jfree.chart.event.ChartProgressListener;
 
 /**
- *
  * @author tony
  */
 public class ChartLocker extends Locker implements ChartProgressListener {

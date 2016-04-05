@@ -31,21 +31,16 @@ import gchisto.jfreechart.extensions.AbstractChangingDataset;
 import gchisto.jfreechart.extensions.ChangingCategoryDataset;
 import gchisto.jfreechart.extensions.ChangingCategoryDatasetWithTTG;
 import gchisto.jfreechart.extensions.ChangingPieDatasetWithTTG;
-import gchisto.utils.Calculations;
-import gchisto.utils.Comparisons;
-import gchisto.utils.Conversions;
-import gchisto.utils.Formatter;
-import gchisto.utils.Formatting;
-import gchisto.utils.NumberSeq;
+import gchisto.utils.*;
 import gchisto.utils.errorchecking.ArgumentChecking;
 import gchisto.utils.errorchecking.ShouldNotReachHereException;
-import java.util.ArrayList;
-import java.util.List;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.general.PieDataset;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- *
  * @author tony
  */
 public class DatasetGenerator {
@@ -118,24 +113,24 @@ public class DatasetGenerator {
      * The names of the available metrics.
      */
     static final private String[] METRIC_NAMES = {
-        "Num", "Num", "Total GC", "Total GC", "Overhead", "Avg", "Sigma", "Min", "Max"
+            "Num", "Num", "Total GC", "Total GC", "Overhead", "Avg", "Sigma", "Min", "Max"
     };
     /**
      * The names of the units of the available metrics.
      */
     static final private String[] METRIC_UNIT_NAMES = {
-        null, "%", "sec", "%", "%", "ms", "ms", "ms", "ms"
+            null, "%", "sec", "%", "%", "ms", "ms", "ms", "ms"
     };
     /**
      * A formatter that knows how to properly format the value of each metric
      * to a string.
      */
     static final private Formatter[] METRIC_FORMATTERS = {
-        Formatting.intFormatter(), Formatting.percFormatter(),
-        Formatting.doubleFormatter(), Formatting.percFormatter(),
-        Formatting.percFormatter(),
-        Formatting.doubleFormatter(), Formatting.doubleFormatter(),
-        Formatting.doubleFormatter(), Formatting.doubleFormatter()
+            Formatting.intFormatter(), Formatting.percFormatter(),
+            Formatting.doubleFormatter(), Formatting.percFormatter(),
+            Formatting.percFormatter(),
+            Formatting.doubleFormatter(), Formatting.doubleFormatter(),
+            Formatting.doubleFormatter(), Formatting.doubleFormatter()
     };
     final GCTraceSet gcTraceSet;
     /**
@@ -162,7 +157,6 @@ public class DatasetGenerator {
      *
      * @param metric The ID of the metric whose name will be returned.
      * @return The name of the metric with the given ID.
-     *
      * @see #getMetricNameWithUnit(int)
      * @see #getUnitName(int)
      * @see #getFormatter(int)
@@ -179,7 +173,6 @@ public class DatasetGenerator {
      *
      * @param metric The ID of the metric whose unit's name will be returned.
      * @return The name of the unit of the metric with the given ID.
-     *
      * @see #getMetricName(int)
      * @see #getMetricNameWithUnit(int)
      * @see #getFormatter(int)
@@ -197,7 +190,6 @@ public class DatasetGenerator {
      * @param metric The ID of the metric whose name will be returned.
      * @return The name of the given name, suffixed with the unit of that
      * metric in round brackets.
-     *
      * @see #getUnitName(int)
      * @see #getFormatter(int)
      */
@@ -217,7 +209,6 @@ public class DatasetGenerator {
      *
      * @param metric The ID of the metric for which a formatter will be returned.
      * @return The ID of the metric for which a formatter will be returned.
-     *
      * @see #getMetricName(int)
      * @see #getMetricNameWithUnit(int)
      * @see #getUnitName(int)
@@ -235,7 +226,6 @@ public class DatasetGenerator {
      * @param metric The ID of the metric whose name will be returned.
      * @return The name of the given name, suffixed with the unit of that
      * metric in round brackets.
-     *
      * @see #getUnitName(int)
      * @see #getFormatter(int)
      */

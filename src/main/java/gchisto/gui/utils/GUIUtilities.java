@@ -24,12 +24,9 @@
 package gchisto.gui.utils;
 
 import gchisto.utils.errorchecking.ArgumentChecking;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * A convenience class that includes methods the generate Swing components
@@ -39,7 +36,7 @@ import javax.swing.SwingConstants;
  * @author Tony Printezis
  */
 public class GUIUtilities {
-    
+
     /**
      * The name of the font that will be used by methods in this class that
      * set the font of components.
@@ -50,7 +47,7 @@ public class GUIUtilities {
      * @see #setBoldItalic(Component)
      */
     static final private String FONT_NAME = "Dialog";
-    
+
     /**
      * The foreground color for the table components.
      *
@@ -59,7 +56,7 @@ public class GUIUtilities {
      * @see #createJCheckBoxForTable(boolean)
      */
     static final public Color TABLE_COMPONENT_FG_COLOR = Color.BLACK;
-    
+
     /**
      * The background color for the table components.
      *
@@ -68,37 +65,35 @@ public class GUIUtilities {
      * @see #createJCheckBoxForTable(boolean)
      */
     static final public Color TABLE_COMPONENT_BG_COLOR = Color.WHITE;
-    
+
     /**
      * The background color for the table header components (labels,
      * typically).
-     * 
+     *
      * @see #setTableHeader(Component)
      */
     static final private Color TABLE_HEADER_BG_COLOR = new Color(238, 238, 238);
-    
+
     /**
      * It creates a new label for inclusion in a table and sets the text
      * of the label to the given string.
-     * 
+     *
      * @param str The text on the label to be created.
      * @return A new label for inclusion in a table.
-     *
      * @see #createJLabelForTable(String)
      */
     static public JLabel createJLabelForTable(String str) {
         ArgumentChecking.notNull(str, "str");
-        
+
         JLabel label = createJLabelForTable();
         label.setText(str);
         return label;
     }
-    
+
     /**
      * It creates a new label for inclusion in a table.
-     * 
-     * @return A new label for inclusion in a table.
      *
+     * @return A new label for inclusion in a table.
      * @see #createJLabelForTable()
      */
     static public JLabel createJLabelForTable() {
@@ -109,13 +104,13 @@ public class GUIUtilities {
         label.setBackground(TABLE_COMPONENT_BG_COLOR);
         return label;
     }
-    
+
     /**
-     * It creates a new check box for inclusion in a table and sets 
+     * It creates a new check box for inclusion in a table and sets
      * its "is selected" attribute to the given value.
-     * 
+     *
      * @param selected It determines whether the newly-created check box
-     * will be selected or not.
+     *                 will be selected or not.
      * @return A new check box for inclusion in a table.
      */
     static public JCheckBox createJCheckBoxForTable(boolean selected) {
@@ -127,7 +122,7 @@ public class GUIUtilities {
         checkBox.setSelected(selected);
         return checkBox;
     }
-    
+
     /**
      * It sets a component, typically a label, to have the look of a table
      * header.
@@ -136,92 +131,88 @@ public class GUIUtilities {
      */
     static public void setTableHeader(Component component) {
         ArgumentChecking.notNull(component, "component");
-        
+
         setBold(component);
         component.setForeground(TABLE_COMPONENT_FG_COLOR);
         component.setBackground(TABLE_HEADER_BG_COLOR);
     }
-    
+
     /**
      * It sets the font of the given component to the "Dialog" series and
      * with the plain style.
      *
      * @param component The component whose font will be set.
-     *
      * @see #setBold(Component)
      * @see #setItalic(Component)
      * @see #setBoldItalic(Component)
      */
     static public void setPlain(Component component) {
         ArgumentChecking.notNull(component, "component");
-        
+
         Font font = component.getFont();
         int style = Font.PLAIN;
         int size = font.getSize();
         Font newFont = new Font(FONT_NAME, style, size);
         component.setFont(newFont);
     }
-    
+
     /**
      * It sets the font of the given component to the "Dialog" series and
      * with the bold style.
      *
      * @param component The component whose font will be set.
-     *
      * @see #setPlain(Component)
      * @see #setItalic(Component)
      * @see #setBoldItalic(Component)
      */
     static public void setBold(Component component) {
         ArgumentChecking.notNull(component, "component");
-        
+
         Font font = component.getFont();
         int style = Font.BOLD;
         int size = font.getSize();
         Font newFont = new Font(FONT_NAME, style, size);
         component.setFont(newFont);
     }
-    
+
     /**
      * It sets the font of the given component to the "Dialog" series and
      * with the italic style.
      *
      * @param component The component whose font will be set.
-     *
      * @see #setPlain(Component)
      * @see #setBold(Component)
      * @see #setBoldItalic(Component)
      */
     static public void setItalic(Component component) {
         ArgumentChecking.notNull(component, "component");
-        
+
         Font font = component.getFont();
         int style = Font.ITALIC;
         int size = font.getSize();
         Font newFont = new Font(FONT_NAME, style, size);
         component.setFont(newFont);
     }
-    
+
     /**
      * It sets the font of the given component to the "Dialog" series and
      * with the bold/italic style.
      *
      * @param component The component whose font will be set.
-     *
      * @see #setPlain(Component)
      * @see #setBold(Component)
      * @see #setItalic(Component)
      */
     static public void setBoldItalic(Component component) {
         ArgumentChecking.notNull(component, "component");
-        
+
         Font font = component.getFont();
         int style = Font.ITALIC | Font.BOLD;
         int size = font.getSize();
         Font newFont = new Font(FONT_NAME, style, size);
         component.setFont(newFont);
     }
-    
+
     /**
      * Private constructor to avoid the instantiation of this class.
      */

@@ -24,14 +24,13 @@
 package gchisto.gctracegenerator.file;
 
 /**
- *
  * @author tony
  */
 public class NopGCLogFileReaderThrottle implements GCLogFileReaderThrottle {
 
     public void started() {
     }
-    
+
     public void beforeAddingGCActivity(double startSec) {
     }
 
@@ -41,11 +40,11 @@ public class NopGCLogFileReaderThrottle implements GCLogFileReaderThrottle {
     public boolean shouldContinue() {
         return true;
     }
-    
+
     public void finished() {
     }
-    
+
     public NopGCLogFileReaderThrottle() {
     }
-    
+
 }

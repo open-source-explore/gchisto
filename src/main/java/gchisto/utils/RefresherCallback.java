@@ -24,13 +24,14 @@
 package gchisto.utils;
 
 /**
- *
  * @author tony
  */
 public interface RefresherCallback {
 
     public boolean shouldRefresh();
+
     public void beforeAddingTask();
+
     public void refresh();
-    
+
 }

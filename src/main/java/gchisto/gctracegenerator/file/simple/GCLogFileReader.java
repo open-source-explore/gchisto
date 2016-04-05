@@ -26,6 +26,7 @@ package gchisto.gctracegenerator.file.simple;
 import gchisto.gctrace.GCTrace;
 import gchisto.gctracegenerator.file.GCLogFileReaderThrottle;
 import gchisto.utils.Comparisons;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -36,7 +37,6 @@ import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
 /**
- *
  * @author tony
  */
 public class GCLogFileReader
@@ -103,7 +103,7 @@ public class GCLogFileReader
             if (name.equals("Remark")) {
                 ensureGCActivityAdded(gcTrace, "InitialMark");
             }
-            
+
             gcActivityNames.add(name);
             gcTrace.addGCActivityName(gcActivityNames.indexOf(name),
                     addSpaces(name));
@@ -117,8 +117,8 @@ public class GCLogFileReader
     }
 
     public void readFile(File file,
-            GCTrace gcTrace,
-            GCLogFileReaderThrottle throttle)
+                         GCTrace gcTrace,
+                         GCLogFileReaderThrottle throttle)
             throws IOException {
         FileReader reader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(reader);

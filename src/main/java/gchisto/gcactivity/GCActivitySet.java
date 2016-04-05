@@ -25,6 +25,7 @@ package gchisto.gcactivity;
 
 import gchisto.utils.NumberSeq;
 import gchisto.utils.errorchecking.NotImplementedException;
+
 import java.util.ArrayList;
 
 /**
@@ -32,18 +33,18 @@ import java.util.ArrayList;
  * i.e.. they are of the same "kind". The set should be ordered in increasing
  * order based on the startSec() value of the included GC activities.
  * GC activities in the set should not overlap.
- * <p>
+ * <p/>
  * Because it extends <tt>java.util.ArrayList</tt>, an iteration over the GC
  * activities in it can be easily done using the standard for-loop over
  * collections.
  *
  * @author Tony Printezis
- * @see    gchisto.gcactivityset.GCActivity
- * @see    gchisto.gcactivityset.GCActivitySetListener
- * @see    java.util.ArrayList
+ * @see gchisto.gcactivityset.GCActivity
+ * @see gchisto.gcactivityset.GCActivitySetListener
+ * @see java.util.ArrayList
  */
 public class GCActivitySet extends ArrayList<GCActivity> {
-    
+
     /**
      * The name of the GC activities in the set. This name is the "kind"
      * of the GC activities in the set.
@@ -51,9 +52,9 @@ public class GCActivitySet extends ArrayList<GCActivity> {
      * @see #getGCActivityName()
      */
     final private String gcActivityName;
-    
+
     final private NumberSeq numberSeq = new NumberSeq();
-    
+
     /**
      * It adds a new GC activity to the set. After adding it, it will call the
      * <tt>added()</tt> method on the listeners of this set.
@@ -62,13 +63,13 @@ public class GCActivitySet extends ArrayList<GCActivity> {
      */
     public void addGCActivity(GCActivity gcActivity) {
         assert gcActivity != null;
-        
+
         add(gcActivity);
         numberSeq.add(gcActivity.getDurationSec());
     }
-    
+
     /**
-     * It returns the name of the GC activities in the set. This name is 
+     * It returns the name of the GC activities in the set. This name is
      * the "kind" of the GC activities in the set.
      *
      * @return The name of the GC activities in the set.
@@ -76,26 +77,26 @@ public class GCActivitySet extends ArrayList<GCActivity> {
     public String getGCActivityName() {
         return gcActivityName;
     }
-    
+
     public NumberSeq getNumberSeq() {
         return numberSeq;
     }
-    
+
     /**
      * It verifies the correctness of the contents in the set.
      */
     public void verify() {
         throw new NotImplementedException();
     }
-    
+
     /**
      * It creates a new GC activity set instance.
-     * 
+     *
      * @param gcActivityName The name of the GC activites in the set. This
-     * name is the "kind" of the GC activities in the set.
+     *                       name is the "kind" of the GC activities in the set.
      */
     public GCActivitySet(String gcActivityName) {
         this.gcActivityName = gcActivityName;
     }
-    
+
 }

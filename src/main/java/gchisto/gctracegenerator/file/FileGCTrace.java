@@ -26,12 +26,12 @@ package gchisto.gctracegenerator.file;
 import gchisto.gctrace.GCTrace;
 import gchisto.gctracegenerator.GCTraceGeneratorListener;
 import gchisto.utils.MessageReporter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
 /**
- *
  * @author tony
  */
 public class FileGCTrace extends GCTrace {
@@ -39,11 +39,11 @@ public class FileGCTrace extends GCTrace {
     final protected File file;
     final protected Date lastModifiedDate;
     final protected GCLogFileReader reader;
-    
+
     private class ConcurrentFileReader extends Thread {
         private GCTraceGeneratorListener listener;
         private GCLogFileReaderThrottle throttle;
-        
+
         public void run() {
             MessageReporter.showMessage("Started reading file " + file.getAbsolutePath());
             listener.started();
@@ -56,20 +56,20 @@ public class FileGCTrace extends GCTrace {
                 listener.failed();
             }
         }
-        
+
         public ConcurrentFileReader(GCTraceGeneratorListener listener,
-                GCLogFileReaderThrottle throttle) {
+                                    GCLogFileReaderThrottle throttle) {
             this.listener = listener;
             this.throttle = throttle;
         }
     }
-    
+
     protected void readFileConcurrently(GCTraceGeneratorListener listener) {
         readFileConcurrently(listener, new NopGCLogFileReaderThrottle());
     }
 
     protected void readFileConcurrently(GCTraceGeneratorListener listener,
-            GCLogFileReaderThrottle throttle) {
+                                        GCLogFileReaderThrottle throttle) {
         ConcurrentFileReader reader = new ConcurrentFileReader(listener, throttle);
         reader.start();
     }
@@ -77,24 +77,24 @@ public class FileGCTrace extends GCTrace {
     public String getLongName() {
         return "File : " + file.getAbsolutePath();
     }
-    
+
     public File getFile() {
         return file;
     }
-    
+
     private void readFile(GCLogFileReaderThrottle throttle)
             throws IOException {
         reader.readFile(file, this, throttle);
     }
-    
+
     public void init(GCTraceGeneratorListener listener) {
         readFileConcurrently(listener);
     }
-    
+
     public String getSuggestedName() {
         return "File : " + file.getName();
     }
-    
+
     public String getInfoString() {
         return getName() + "\n" +
                 "\n" +
@@ -102,10 +102,10 @@ public class FileGCTrace extends GCTrace {
                 "Read On : " + getAddedDate() + "\n" +
                 "Last Modified On : " + lastModifiedDate;
     }
-    
+
     public FileGCTrace(File file, GCLogFileReader reader) {
         reader.setupGCActivityNames(this);
-        
+
         this.file = file;
         this.lastModifiedDate = new Date(file.lastModified());
         this.reader = reader;

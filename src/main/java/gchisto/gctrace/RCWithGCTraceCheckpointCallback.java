@@ -24,11 +24,10 @@
 package gchisto.gctrace;
 
 /**
- *
  * @author tony
  */
 public interface RCWithGCTraceCheckpointCallback {
 
     public void refresh(GCTraceCheckpoint checkpoint);
-    
+
 }

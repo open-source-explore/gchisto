@@ -30,11 +30,11 @@ package gchisto.utils.errorchecking;
  * @author Tony Printezis
  */
 public class NotImplementedException extends RuntimeException {
-    
+
     /**
      * It creates a new instance of this exception.
      */
     public NotImplementedException() {
     }
-    
+
 }

@@ -37,7 +37,6 @@ import org.jfree.data.DomainOrder;
 import org.jfree.data.xy.XYDataset;
 
 /**
- *
  * @author tony
  */
 public class Dataset extends AbstractDatasetWithGroups
@@ -74,7 +73,7 @@ public class Dataset extends AbstractDatasetWithGroups
      * index of the GC activity set within the current GC trace).
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
+     *               GC trace.
      * @return The GC activity set for a given series.
      */
     private GCActivitySet gcActivitySet(int series) {
@@ -90,8 +89,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * combination.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The GC activity object for a given series and item
      * combination.
      */
@@ -169,10 +168,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * and GC end times of the GC activity.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The x-value for the given GC activity.
-     *
      * @see #getX(int, int)
      * @see #getStartX(int, int)
      * @see #getStartXValue(int, int)
@@ -193,10 +191,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * and GC end times of the GC activity.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The x-value for the given GC activity.
-     *
      * @see #getXValue(int, int)
      * @see #getStartX(int, int)
      * @see #getStartXValue(int, int)
@@ -220,10 +217,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * customized with of the given GC activity.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The y-value for the given GC activity.
-     *
      * @see #getY(int, int)
      * @see #getStartY(int, int)
      * @see #getStartYValue(int, int)
@@ -243,10 +239,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * customized with of the given GC activity.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The y-value for the given GC activity.
-     *
      * @see #getYValue(int, int)
      * @see #getStartY(int, int)
      * @see #getStartYValue(int, int)
@@ -263,7 +258,7 @@ public class Dataset extends AbstractDatasetWithGroups
                 return Conversions.secToMS(durationSec);
             default:
                 throw new ShouldNotReachHereException();
-            }
+        }
     }
 
     /**
@@ -271,10 +266,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is the start time of the GC activity.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The start x-value for the given GC activity.
-     *
      * @see #getX(int, int)
      * @see #getXValue(int, int)
      * @see #getStartXValue(int, int)
@@ -293,10 +287,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is the start time of the GC activity.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The start x-value for the given GC activity.
-     *
      * @see #getX(int, int)
      * @see #getXValue(int, int)
      * @see #getStartX(int, int)
@@ -316,10 +309,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is the end time of the GC activity.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The end x-value for the given GC activity.
-     *
      * @see #getX(int, int)
      * @see #getXValue(int, int)
      * @see #getStartX(int, int)
@@ -338,10 +330,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is the end time of the GC activity.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The end x-value for the given GC activity.
-     *
      * @see #getX(int, int)
      * @see #getXValue(int, int)
      * @see #getStartX(int, int)
@@ -362,10 +353,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is 0.0.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The start y-value for the given GC activity.
-     *
      * @see #getY(int, int)
      * @see #getYValue(int, int)
      * @see #getStartYValue(int, int)
@@ -384,10 +374,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is 0.0.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The start y-value for the given GC activity.
-     *
      * @see #getY(int, int)
      * @see #getYValue(int, int)
      * @see #getStartY(int, int)
@@ -407,10 +396,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * customized with of the given GC activity.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The end y-value for the given GC activity.
-     *
      * @see #getY(int, int)
      * @see #getYValue(int, int)
      * @see #getStartY(int, int)
@@ -430,10 +418,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * customized with of the given GC activity.
      *
      * @param series The index of the GC activity set within the current
-     * GC trace.
-     * @param item The index of the GC activity within the GC activity set.
+     *               GC trace.
+     * @param item   The index of the GC activity within the GC activity set.
      * @return The end y-value for the given GC activity.
-     *
      * @see #getY(int, int)
      * @see #getYValue(int, int)
      * @see #getStartY(int, int)
@@ -443,7 +430,7 @@ public class Dataset extends AbstractDatasetWithGroups
     public double getEndYValue(int series, int item) {
         assert 0 <= series && series < checkpoint.gcTraceSize();
         assert 0 <= item && item < checkpoint.size(series);
-        
+
         return getYValue(series, item);
     }
 
@@ -458,17 +445,18 @@ public class Dataset extends AbstractDatasetWithGroups
                 Formatting.formatDouble(durationSec));
         return str;
     }
+
     /**
      * It creates a new instance of this dataset generator.
      *
      * @param gcTraceSet The GC trace set that contains the GC trace that will
-     * provide the data for the new dataset generator.
-     * @param gcTrace The GC trace that will provide data for the
-     * new dataset generator.
+     *                   provide the data for the new dataset generator.
+     * @param gcTrace    The GC trace that will provide data for the
+     *                   new dataset generator.
      */
     public Dataset(GCTrace gcTrace, GCTraceCheckpoint checkpoint, int metric) {
         super(gcTrace.getGCActivityNamesArray());
-        
+
         this.gcTrace = gcTrace;
         this.checkpoint = checkpoint;
         this.metric = metric;

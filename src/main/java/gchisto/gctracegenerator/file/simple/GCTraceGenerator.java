@@ -25,23 +25,23 @@ package gchisto.gctracegenerator.file.simple;
 
 import gchisto.gctracegenerator.file.FileGCTrace;
 import gchisto.gctracegenerator.file.FileGCTraceGenerator;
+
 import java.io.File;
 
 /**
- *
  * @author tony
  */
 public class GCTraceGenerator extends FileGCTraceGenerator {
-    
+
     public String getGCTraceType() {
         return "Simple GC Log";
     }
-    
+
     protected FileGCTrace newFileGCTrace(File file) {
         return new FileGCTrace(file, new GCLogFileReader());
     }
-    
+
     public GCTraceGenerator() {
     }
-    
+
 }

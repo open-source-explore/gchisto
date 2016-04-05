@@ -25,13 +25,14 @@ package gchisto.gui.panels.gcstats;
 
 import gchisto.jfreechart.extensions.ChangingCategoryDatasetWithTTG;
 import gchisto.jfreechart.extensions.ChartLocker;
-import java.awt.BorderLayout;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
+
+import java.awt.*;
 
 /**
  * A panel that contains a bar chart that shows the values of a metric over
@@ -59,7 +60,7 @@ public class MetricChartPanel extends GCStatsChartPanel {
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         CategoryItemRenderer renderer = plot.getRenderer();
         renderer.setToolTipGenerator(dataset);
-        
+
         mainPanel().add(BorderLayout.CENTER, new ChartPanel(chart));
     }
 
@@ -79,9 +80,9 @@ public class MetricChartPanel extends GCStatsChartPanel {
     /**
      * It creates a new instance of this panel and adds a chart into it.
      *
-     * @param title The name of the metric.
+     * @param title    The name of the metric.
      * @param unitName The name of the unit of the metric.
-     * @param dataset The dataset that will provide the values for the chart.
+     * @param dataset  The dataset that will provide the values for the chart.
      */
     public MetricChartPanel(
             String title, String unitName,

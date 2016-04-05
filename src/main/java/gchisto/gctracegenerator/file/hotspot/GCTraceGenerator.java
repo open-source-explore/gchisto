@@ -25,10 +25,10 @@ package gchisto.gctracegenerator.file.hotspot;
 
 import gchisto.gctracegenerator.file.FileGCTrace;
 import gchisto.gctracegenerator.file.FileGCTraceGenerator;
+
 import java.io.File;
 
 /**
- *
  * @author tony
  */
 public class GCTraceGenerator extends FileGCTraceGenerator {
@@ -36,12 +36,12 @@ public class GCTraceGenerator extends FileGCTraceGenerator {
     public String getGCTraceType() {
         return "HotSpot GC Log";
     }
-    
+
     protected FileGCTrace newFileGCTrace(File file) {
         return new FileGCTrace(file, new GCLogFileReader());
     }
-    
+
     public GCTraceGenerator() {
     }
-    
+
 }

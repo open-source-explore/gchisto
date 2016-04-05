@@ -24,11 +24,10 @@
 package gchisto.utils;
 
 /**
- *
  * @author tony
  */
 public interface WorkerTask {
-    
+
     public void doIt();
-    
+
 }

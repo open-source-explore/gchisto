@@ -32,15 +32,14 @@ import gchisto.jfreechart.extensions.IntervalXYDatasetWithGroups;
 import gchisto.utils.Comparisons;
 import gchisto.utils.Conversions;
 import gchisto.utils.Formatting;
-import java.util.ArrayList;
-import java.util.ArrayList;
-import java.util.List;
 import org.jfree.chart.labels.XYToolTipGenerator;
 import org.jfree.data.DomainOrder;
 import org.jfree.data.xy.XYDataset;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- *
  * @author tony
  */
 public class Dataset extends AbstractDatasetWithGroups
@@ -72,7 +71,7 @@ public class Dataset extends AbstractDatasetWithGroups
      * ID / bucket combination.
      *
      * @param series The ID of the GC activity.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The value at the top of a bar for a given GC activity
      * ID / bucket combination.
      */
@@ -99,7 +98,7 @@ public class Dataset extends AbstractDatasetWithGroups
      * ID / bucket combination.
      *
      * @param series The ID of the GC activity.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The value at the bottom of a bar for a given GC activity
      * ID / bucket combination.
      */
@@ -186,9 +185,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * a bucket and the start of the next bucket.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The x-value for the given bucket.
-     *
      * @see #getX(int, int)
      * @see #getStartX(int, int)
      * @see #getStartXValue(int, int)
@@ -208,9 +206,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * a bucket and the start of the next bucket.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The x-value for the given bucket.
-     *
      * @see #getX(int, int)
      * @see #getStartX(int, int)
      * @see #getStartXValue(int, int)
@@ -230,9 +227,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * activities with ID less than or equal to the given one.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The y-value for the given bucket.
-     *
      * @see #getY(int, int)
      * @see #getStartY(int, int)
      * @see #getStartYValue(int, int)
@@ -252,9 +248,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * activities with ID less than or equal to the given one.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The y-value for the given bucket.
-     *
      * @see #getYValue(int, int)
      * @see #getStartY(int, int)
      * @see #getStartYValue(int, int)
@@ -273,9 +268,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is the start time of the bucket.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The start x-value for the given bucket.
-     *
      * @see #getX(int, int)
      * @see #getXValue(int, int)
      * @see #getStartXValue(int, int)
@@ -295,9 +289,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is the start time of the bucket.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The start x-value for the given bucket.
-     *
      * @see #getXValue(int, int)
      * @see #getXValue(int, int)
      * @see #getStartXValue(int, int)
@@ -317,9 +310,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is the end time of the bucket.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The end x-value for the given bucket.
-     *
      * @see #getX(int, int)
      * @see #getXValue(int, int)
      * @see #getStartX(int, int)
@@ -339,9 +331,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is the end time of the bucket.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The end x-value for the given bucket.
-     *
      * @see #getXValue(int, int)
      * @see #getXValue(int, int)
      * @see #getStartX(int, int)
@@ -361,9 +352,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is the start y-value of the preceding GC activity, or 0.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The start y-value for the given bucket.
-     *
      * @see #getY(int, int)
      * @see #getYValue(int, int)
      * @see #getStartYValue(int, int)
@@ -383,9 +373,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * here is the start y-value of the preceding GC activity, or 0.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The start y-value for the given bucket.
-     *
      * @see #getYValue(int, int)
      * @see #getYValue(int, int)
      * @see #getStartYValue(int, int)
@@ -406,9 +395,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * with ID less than or equal to the given one.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The end y-value for the given bucket.
-     *
      * @see #getY(int, int)
      * @see #getYValue(int, int)
      * @see #getStartY(int, int)
@@ -429,9 +417,8 @@ public class Dataset extends AbstractDatasetWithGroups
      * with ID less than or equal to the given one.
      *
      * @param series The GC activity ID within the current GC trace.
-     * @param item The bucket index.
+     * @param item   The bucket index.
      * @return The end y-value for the given bucket.
-     *
      * @see #getYValue(int, int)
      * @see #getYValue(int, int)
      * @see #getStartY(int, int)
@@ -458,6 +445,7 @@ public class Dataset extends AbstractDatasetWithGroups
                 Formatting.formatInt(value));
         return str;
     }
+
     /**
      * It returns the duration of a bucket in millis.
      *
@@ -480,7 +468,7 @@ public class Dataset extends AbstractDatasetWithGroups
      * It returns the index of the bucket that contains the given duration.
      *
      * @param durationSec The duration for which the containing bucket will
-     * be returned.
+     *                    be returned.
      * @return The index of the bucket that contains the given duration.
      */
     private int getBucketIndex(double durationSec) {
@@ -578,9 +566,9 @@ public class Dataset extends AbstractDatasetWithGroups
      * It creates a new instance of this dataset generator.
      *
      * @param gcTraceSet The GC trace set that contains the GC trace that will
-     * provide the data for the new dataset generator.
-     * @param gcTrace The GC trace that will provide data for the
-     * new dataset generator.
+     *                   provide the data for the new dataset generator.
+     * @param gcTrace    The GC trace that will provide data for the
+     *                   new dataset generator.
      */
     public Dataset(GCTrace gcTrace, GCTraceCheckpoint checkpoint) {
         super();

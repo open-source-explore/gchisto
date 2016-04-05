@@ -27,7 +27,6 @@ import gchisto.utils.Locker;
 import gchisto.utils.RefresherCallback;
 
 /**
- *
  * @author tony
  */
 public class RCWithGCTraceCheckpoint implements RefresherCallback {

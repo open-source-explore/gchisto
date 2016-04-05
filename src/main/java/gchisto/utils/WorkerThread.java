@@ -27,24 +27,23 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- *
  * @author tony
  */
 public class WorkerThread extends Thread {
-    
+
     private Queue<WorkerTask> queue = new LinkedList<WorkerTask>();
-    
+
     static final private WorkerThread instance;
-    
+
     static {
         instance = new WorkerThread();
         instance.start();
     }
-    
+
     static public WorkerThread instance() {
         return instance;
     }
-    
+
     public void run() {
         while (true) {
             WorkerTask task;
@@ -62,13 +61,13 @@ public class WorkerThread extends Thread {
             task.doIt();
         }
     }
-    
+
     synchronized public void add(WorkerTask task) {
         queue.offer(task);
         notifyAll();
     }
-    
+
     private WorkerThread() {
     }
-    
+
 }

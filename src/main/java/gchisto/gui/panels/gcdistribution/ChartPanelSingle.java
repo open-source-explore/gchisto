@@ -25,23 +25,20 @@ package gchisto.gui.panels.gcdistribution;
 
 import gchisto.gcactivity.GCActivity;
 import gchisto.gcactivity.GCActivitySet;
-import gchisto.gctrace.GCTrace;
-import gchisto.gctrace.GCTraceCheckpoint;
-import gchisto.gctrace.GCTraceListener;
-import gchisto.gctrace.RCWithGCTraceCheckpoint;
-import gchisto.gctrace.RCWithGCTraceCheckpointCallback;
+import gchisto.gctrace.*;
 import gchisto.gui.utils.AbstractChartPanel;
 import gchisto.gui.utils.GroupActivatingPanel;
 import gchisto.jfreechart.extensions.ChartLocker;
 import gchisto.utils.Refresher;
 import gchisto.utils.WorkerThread;
-import java.awt.BorderLayout;
-import javax.swing.JSplitPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * A panel that contains a bar chart that shows the GC pause time distribution.
@@ -78,7 +75,7 @@ public class ChartPanelSingle extends AbstractChartPanel
         org.jfree.chart.ChartPanel chartPanel =
                 new org.jfree.chart.ChartPanel(chart);
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
-                groupActivatingPanel,chartPanel);
+                groupActivatingPanel, chartPanel);
         splitPane.setDividerLocation(200);
         mainPanel().add(BorderLayout.CENTER, splitPane);
     }
@@ -122,9 +119,9 @@ public class ChartPanelSingle extends AbstractChartPanel
     /**
      * It creates a new instance of this panel and adds a chart into it.
      *
-     * @param title The name of the metric.
+     * @param title    The name of the metric.
      * @param unitName The name of the unit of the metric.
-     * @param dataset The dataset that will provide the values for the chart.
+     * @param dataset  The dataset that will provide the values for the chart.
      */
     public ChartPanelSingle(
             String title, String unitName,

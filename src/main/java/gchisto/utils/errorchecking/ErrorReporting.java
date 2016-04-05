@@ -31,37 +31,35 @@ package gchisto.utils.errorchecking;
  * @author Tony Printezis
  */
 public class ErrorReporting {
-    
+
     /**
      * If it is true, then warnings are reported.
      *
      * @see #setShowWarnings(boolean)
      */
     static private boolean showWarnings = false;
-    
+
     /**
-     * It unconditionally throws a <tt>FatalErrorException</tt> with the 
+     * It unconditionally throws a <tt>FatalErrorException</tt> with the
      * given message.
      *
      * @param str The message to be attached to the exception to be thrown.
-     * @exception FatalErrorException The exception that is unconditionally
-     * thrown.
-     *
+     * @throws FatalErrorException The exception that is unconditionally
+     *                             thrown.
      * @see #fatalError(boolean, String)
      */
     static public void fatalError(String str) {
         fatalError(false, str);
     }
-    
+
     /**
      * It throws a <tt>FatalErrorException</tt> with the given message if
      * the given assertion does not hold.
      *
      * @param assertion The assertion to be checked.
-     * @param str The message to be attached to the exception to be thrown.
-     * @exception FatalErrorException The exception that is conditionally
-     * thrown.
-     *
+     * @param str       The message to be attached to the exception to be thrown.
+     * @throws FatalErrorException The exception that is conditionally
+     *                             thrown.
      * @see #fatalError(String)
      */
     static public void fatalError(boolean assertion, String str) {
@@ -69,7 +67,7 @@ public class ErrorReporting {
             throw new FatalErrorException(str);
         }
     }
-    
+
     /**
      * It sets whether warnings will be shown or not.
      *
@@ -82,25 +80,23 @@ public class ErrorReporting {
     }
 
     /**
-     * It unconditionally shows a warning with the given message, as long 
+     * It unconditionally shows a warning with the given message, as long
      * as warnings are being shown.
      *
      * @param str The message of the warning to be shown.
-     *
      * @see #setShowWarnings(boolean)
      * @see #warning(boolean, String)
      */
     static public void warning(String str) {
         warning(false, str);
     }
-    
+
     /**
-     * It shows a warning with the given message if the given assertion 
+     * It shows a warning with the given message if the given assertion
      * does not hold and as long as warnings are being shown.
      *
      * @param assertion The assertion to be checked.
-     * @param str The message of the warning to be shown.
-     *
+     * @param str       The message of the warning to be shown.
      * @see #setShowWarnings(boolean)
      * @see #warning(String)
      */
@@ -109,11 +105,11 @@ public class ErrorReporting {
             System.out.println("warning : " + str);
         }
     }
-    
+
     /**
      * Private constructor to avoid the instantiation of this class.
      */
     private ErrorReporting() {
     }
-    
+
 }

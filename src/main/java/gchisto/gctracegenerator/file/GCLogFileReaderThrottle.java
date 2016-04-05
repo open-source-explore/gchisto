@@ -27,17 +27,17 @@ package gchisto.gctracegenerator.file;
  * TODO
  */
 public interface GCLogFileReaderThrottle {
-    
+
     /**
      * TODO
      */
     public void started();
-    
+
     /**
      * TODO
      */
     public boolean shouldContinue();
-    
+
     /**
      * TODO
      */
@@ -47,10 +47,10 @@ public interface GCLogFileReaderThrottle {
      * TODO
      */
     public void afterAddingGCActivity(double startSec);
-    
+
     /**
      * TODO
      */
     public void finished();
-    
+
 }

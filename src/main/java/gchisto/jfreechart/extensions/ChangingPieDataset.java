@@ -26,7 +26,6 @@ package gchisto.jfreechart.extensions;
 import org.jfree.data.general.PieDataset;
 
 /**
- *
  * @author tony
  */
 public interface ChangingPieDataset

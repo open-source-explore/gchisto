@@ -28,15 +28,13 @@ import gchisto.utils.Formatter;
 import gchisto.utils.Locker;
 import gchisto.utils.errorchecking.ArgumentChecking;
 import gchisto.utils.errorchecking.ShouldNotReachHereException;
-import java.awt.Component;
-import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
+import org.jfree.data.category.CategoryDataset;
+
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
-import org.jfree.data.category.CategoryDataset;
+import java.awt.*;
 
 /**
  * A table that shows summary GC statistics for the loaded GC trace,
@@ -57,14 +55,14 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
         /**
          * It returns a label for a particular table cell.
          *
-         * @param table The table in which the label will be included.
-         * @param value The label to be returned.
+         * @param table      The table in which the label will be included.
+         * @param value      The label to be returned.
          * @param isSelected Whether the label is selected or not; currently
-         * this is ignored.
-         * @param hasFocus Whether the label has focus or not; currently
-         * this is ignored.
-         * @param row The row in which the label will be added.
-         * @param col The column in which the label will be added.
+         *                   this is ignored.
+         * @param hasFocus   Whether the label has focus or not; currently
+         *                   this is ignored.
+         * @param row        The row in which the label will be added.
+         * @param col        The column in which the label will be added.
          * @return The label of a particular table cell.
          */
         public Component getTableCellRendererComponent(
@@ -79,6 +77,7 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
             return (JLabel) value;
         }
     }
+
     final private Model model;
     final private Locker locker;
 
@@ -110,6 +109,7 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
          * The set of the table model listeners that are added to this model.
          */
         // final private TableModelListenerSet listeners = new TableModelListenerSet();
+
         /**
          * It returns the number of rows in the table.
          *
@@ -156,7 +156,7 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
          * It returns whether the given cell is editable. Right now, no cells
          * are editable.
          *
-         * @param rowIndex The row of the cell.
+         * @param rowIndex    The row of the cell.
          * @param columnIndex The column of the cell.
          * @return Whether the given cell is editable.
          */
@@ -171,7 +171,7 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
          * It returns the value of the given cell. Right now, the value is
          * actually the <tt>JLabel</tt> for that cell.
          *
-         * @param rowIndex The row of the cell.
+         * @param rowIndex    The row of the cell.
          * @param columnIndex The column of the cell.
          * @return The value of the given cell.
          */
@@ -186,8 +186,8 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
          * It sets the value of the given cell. Right now, we do not allow
          * cells to be editable, hence this should not be called.
          *
-         * @param value The new value for the given cell.
-         * @param rowIndex The row of the given cell.
+         * @param value       The new value for the given cell.
+         * @param rowIndex    The row of the given cell.
          * @param columnIndex The column of the given cell.
          */
         public void setValueAt(Object value, int rowIndex, int columnIndex) {
@@ -204,8 +204,8 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
         public void updateData() {
             for (int r = 0; r < rows; ++r) {
                 for (int metric = DatasetGenerator.METRIC_FIRST;
-                        metric <= DatasetGenerator.METRIC_LAST;
-                        ++metric) {
+                     metric <= DatasetGenerator.METRIC_LAST;
+                     ++metric) {
                     int c = metricToColumn(metric);
                     Formatter formatter = DatasetGenerator.getFormatter(metric);
                     Number number = datasets[c].getValue(0, r);
@@ -238,7 +238,7 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
 
             columnNames[0] = "";
             for (int metric = DatasetGenerator.METRIC_FIRST;
-                    metric <= DatasetGenerator.METRIC_LAST; ++metric) {
+                 metric <= DatasetGenerator.METRIC_LAST; ++metric) {
                 String metricName =
                         DatasetGenerator.getMetricNameWithUnit(metric);
 
@@ -286,7 +286,7 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
      * It creates a new instance of this panel.
      *
      * @param datasetGenerator The dataset generator that will produce
-     * the values for the table.
+     *                         the values for the table.
      */
     public AllStatsTableSingle(
             DatasetGenerator datasetGenerator,
@@ -309,7 +309,8 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
         this.locker = locker;
     }
 
-    /** This method is called from within the constructor to
+    /**
+     * This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.
@@ -321,29 +322,30 @@ public class AllStatsTableSingle extends javax.swing.JPanel {
         table = new javax.swing.JTable();
 
         table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+                new Object[][]{
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null}
+                },
+                new String[]{
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                }
         ));
         tableScrollPane.setViewportView(table);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable table;
     private javax.swing.JScrollPane tableScrollPane;

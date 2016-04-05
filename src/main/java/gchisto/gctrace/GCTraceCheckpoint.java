@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author tony
  */
 public class GCTraceCheckpoint {
@@ -102,12 +101,12 @@ public class GCTraceCheckpoint {
 
     private void extendSizes() {
         assert gcTraceSize == 0;
-        
+
         int newGCTraceSize = gcTrace.size();
         for (int i = 0; i < newGCTraceSize; ++i) {
             extend(i);
         }
-        
+
         assert gcTraceSize == newGCTraceSize;
     }
 

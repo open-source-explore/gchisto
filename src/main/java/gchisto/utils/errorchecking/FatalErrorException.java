@@ -27,8 +27,8 @@ package gchisto.utils.errorchecking;
  * An exception that denotes a fatal error has been raised by the application.
  *
  * @author Tony Printezis
- * @see    gchisto.utils.errorchecking#ErrorReporting.fatalError(String)
- * @see    gchisto.utils.errorchecking#ErrorReporting.fatalError(boolean, String)
+ * @see gchisto.utils.errorchecking#ErrorReporting.fatalError(String)
+ * @see gchisto.utils.errorchecking#ErrorReporting.fatalError(boolean, String)
  */
 public class FatalErrorException extends RuntimeException {
 
@@ -37,16 +37,16 @@ public class FatalErrorException extends RuntimeException {
      */
     private FatalErrorException() {
     }
-    
+
     /**
      * It creates a new instance of this exception and attaches the given
      * message to it.
      *
      * @param str The message to be associated with the new instance
-     * of this exception.
+     *            of this exception.
      */
     public FatalErrorException(String str) {
         super("Fatal Error : " + str);
     }
-    
+
 }

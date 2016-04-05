@@ -24,16 +24,17 @@
 package gchisto.gctracegenerator;
 
 import gchisto.utils.errorchecking.ErrorReporting;
+
 import java.util.LinkedList;
 
 public class GCTraceGeneratorSet extends LinkedList<GCTraceGenerator> {
 
     static private final int GCTRACE_GENERATOR_FOR_FILES_INDEX = 0;
     static private final String[] GCTRACE_GENERATOR_CLASS_NAMES = {
-        "gchisto.gctracegenerator.file.hotspot.GCTraceGenerator",
-        "gchisto.gctracegenerator.file.hotspot.DynamicGCTraceGenerator",
-        "gchisto.gctracegenerator.file.simple.GCTraceGenerator",
-        "gchisto.gctracegenerator.file.simple.DynamicGCTraceGenerator"
+            "gchisto.gctracegenerator.file.hotspot.GCTraceGenerator",
+            "gchisto.gctracegenerator.file.hotspot.DynamicGCTraceGenerator",
+            "gchisto.gctracegenerator.file.simple.GCTraceGenerator",
+            "gchisto.gctracegenerator.file.simple.DynamicGCTraceGenerator"
     };
     private GCTraceGeneratorForFiles gcTraceGeneratorForFiles;
 

@@ -23,16 +23,13 @@
  */
 package gchisto.gctracegenerator;
 
-import gchisto.gctrace.GCTrace;
 import java.io.File;
 
 /**
- *
  * @author tony
  */
 public interface GCTraceGeneratorForFiles extends GCTraceGenerator {
-    
-    public void createNewGCTrace(File file,
-            GCTraceGeneratorListener listener);
-    
+
+    public void createNewGCTrace(File file, GCTraceGeneratorListener listener);
+
 }

@@ -26,21 +26,22 @@ package gchisto.gctrace;
 import gchisto.gcactivity.GCActivity;
 import gchisto.gcactivity.GCActivitySet;
 import gchisto.utils.errorchecking.ArgumentChecking;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * It represents a GC trace. It contains a set of GC activity sets,
  * one for each of the different GC activities that appear in the GC trace file.
- * <p>
+ * <p/>
  * Because it extends <tt>java.util.ArrayList</tt>, an iteration over the GC
  * activitiy sets in it can be easily done using the standard for-loop over
  * collections.
  *
  * @author Tony Printezis
- * @see    gchisto.gcactivityset.GCActivitySet
- * @see    gchisto.gctraceset.GCActivityNames
- * @see    gchisto.gctraceset.GCTraceSet
+ * @see gchisto.gcactivityset.GCActivitySet
+ * @see gchisto.gctraceset.GCActivityNames
+ * @see gchisto.gctraceset.GCTraceSet
  */
 public abstract class GCTrace extends ArrayList<GCActivitySet> {
 
@@ -58,7 +59,7 @@ public abstract class GCTrace extends ArrayList<GCActivitySet> {
      *
      * @see #getAddedDate()
      * @see #setAddedDate(Date)
-     *
+     * <p/>
      * TODO
      */
     private Date addedDate;
@@ -101,14 +102,13 @@ public abstract class GCTrace extends ArrayList<GCActivitySet> {
      * @return The name that is associated with this GC trace. This is
      * unique across all the GC traces that are included in a single GC trace
      * set.
-     *
      * @see #setName(String)
      * @see gchisto.gctraceset.GCTraceSet#createUniqueGCTraceName(File)
      */
     public String getName() {
         return name;
     }
-    
+
     public String getLongName() {
         return getName();
     }
@@ -118,7 +118,7 @@ public abstract class GCTrace extends ArrayList<GCActivitySet> {
      *
      * @return The date/time when this GC trace was populated.
      * @see #setAddedDate(Date)
-     *
+     * <p/>
      * TODO
      */
     public Date getAddedDate() {
@@ -141,7 +141,7 @@ public abstract class GCTrace extends ArrayList<GCActivitySet> {
     public double getLastTimeStampSec() {
         return lastTimeStampSec;
     }
-    
+
     /**
      * It returns an array containing the GC activity names that appear in
      * this GC trace.
@@ -157,7 +157,6 @@ public abstract class GCTrace extends ArrayList<GCActivitySet> {
      * It sets the name of this GC trace.
      *
      * @param name The new name of this GC trace.
-     *
      * @see #getName()
      * @see gchisto.gctraceset.GCTraceSet#createUniqueGCTraceName(File)
      */
@@ -170,10 +169,9 @@ public abstract class GCTrace extends ArrayList<GCActivitySet> {
     /**
      * It sets the read date/time of this GC trace.
      *
-     *
      * @param addedDate The new read date/time of this GC trace.
      * @see #getAddedDate()
-     *
+     * <p/>
      * TODO
      */
     public void setAddedDate(Date addedDate) {
@@ -190,9 +188,9 @@ public abstract class GCTrace extends ArrayList<GCActivitySet> {
      * GC activities.
      *
      * @param gcActivityName The name of the GC activity to be added.
-     * @param startSec The time stamp of the start of the GC activity to
-     * be added, in seconds.
-     * @param durationSec The duration of the GC activity, in seconds.
+     * @param startSec       The time stamp of the start of the GC activity to
+     *                       be added, in seconds.
+     * @param durationSec    The duration of the GC activity, in seconds.
      */
     public void addGCActivity(
             int id,
@@ -213,11 +211,11 @@ public abstract class GCTrace extends ArrayList<GCActivitySet> {
      * GC activities.
      *
      * @param gcActivityName The name of the GC activity to be added.
-     * @param startSec The time stamp of the start of the GC activity to
-     * be added, in seconds.
-     * @param durationSec The duration of the GC activity, in seconds.
-     * @param overheadPerc The concurrent overhead of the GC activity to
-     * be added.
+     * @param startSec       The time stamp of the start of the GC activity to
+     *                       be added, in seconds.
+     * @param durationSec    The duration of the GC activity, in seconds.
+     * @param overheadPerc   The concurrent overhead of the GC activity to
+     *                       be added.
      */
     public void addGCActivity(
             int id,
@@ -238,7 +236,7 @@ public abstract class GCTrace extends ArrayList<GCActivitySet> {
      * that is used by all the public ones.
      *
      * @param gcActivityName The name of the GC activity to be added.
-     * @param gcActivity The GC activity to be added.
+     * @param gcActivity     The GC activity to be added.
      */
     synchronized private void addGCActivity(
             int id,
@@ -290,25 +288,25 @@ public abstract class GCTrace extends ArrayList<GCActivitySet> {
      * TODO
      */
     public void afterAddingToGCTraceSet() {
-    // do nothing, unless overriden
+        // do nothing, unless overriden
     }
 
     /**
      * TODO
      */
     public void beforeRemovingFromGCTraceSet() {
-    // do nothing, unless overriden
-    // this has to return before the GC trace is removed from the GC trace set
+        // do nothing, unless overriden
+        // this has to return before the GC trace is removed from the GC trace set
     }
 
     /**
      * It creates a new GC trace instance.
      *
-     * @param file The file associated with the new GC trace.
+     * @param file             The file associated with the new GC trace.
      * @param lastModifiedDate The last modified date/time of the new GC trace.
-     * @param addedDate Thenew read date/time of the new GC trace.
-     *
-     * TODO
+     * @param addedDate        Thenew read date/time of the new GC trace.
+     *                         <p/>
+     *                         TODO
      */
     public GCTrace() {
     }

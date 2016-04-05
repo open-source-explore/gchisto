@@ -26,10 +26,9 @@ package gchisto.jfreechart.extensions;
 import org.jfree.chart.labels.PieToolTipGenerator;
 
 /**
- *
  * @author tony
  */
 public interface ChangingPieDatasetWithTTG
- extends ChangingPieDataset, PieToolTipGenerator {
+        extends ChangingPieDataset, PieToolTipGenerator {
 
 }

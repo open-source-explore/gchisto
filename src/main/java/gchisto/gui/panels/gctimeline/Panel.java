@@ -28,7 +28,6 @@ import gchisto.gctrace.GCTraceCheckpoint;
 import gchisto.gui.utils.TabbedPane;
 
 /**
- *
  * @author tony
  */
 public class Panel extends TabbedPane<ChartPanel> {
@@ -37,9 +36,9 @@ public class Panel extends TabbedPane<ChartPanel> {
         GCTraceCheckpoint checkpoint = new GCTraceCheckpoint(gcTrace);
         checkpoint.checkpoint();
 
-        Dataset dataset = 
+        Dataset dataset =
                 new Dataset(gcTrace, checkpoint, Dataset.METRIC_DURATION);
-        
+
         String name = gcTrace.getName();
         ChartPanel panel = new ChartPanel(name, "ms", dataset, checkpoint);
         gcTrace.addListener(panel);

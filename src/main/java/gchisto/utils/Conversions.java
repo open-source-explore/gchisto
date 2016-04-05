@@ -30,31 +30,29 @@ package gchisto.utils;
  * @author Tony Printezis
  */
 public class Conversions {
-    
+
     /**
      * It converts seconds to millis.
      *
      * @param sec The seconds to be converted in millis.
      * @return The millis amount that equals the <tt>sec</tt> argument.
-     *
      * @see gchisto.utils.Conversions#msToSec(double)
      */
     static public double secToMS(double sec) {
         return sec * 1000.0;
     }
-    
+
     /**
      * It converts millis to seconds.
      *
      * @param ms The millis to be converted in seconds.
      * @return The seconds amount that equals the <tt>ms</tt> argument.
-     *
      * @see gchisto.utils.Conversions#secToMS(double)
      */
     static public double msToSec(double ms) {
         return ms / 1000.0;
     }
-    
+
     /**
      * Private constructor to avoid the instantiation of this class.
      */

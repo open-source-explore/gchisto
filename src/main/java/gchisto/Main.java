@@ -25,7 +25,8 @@ package gchisto;
 
 import gchisto.gui.MainFrame;
 import gchisto.utils.errorchecking.ErrorReporting;
-import java.awt.Dimension;
+
+import java.awt.*;
 
 /**
  * The main class of the application. It parses the command line parameters and
@@ -34,26 +35,26 @@ import java.awt.Dimension;
  * @author Tony Printezis
  */
 public class Main {
-    
+
     /**
      * Private constructor so that the class is not instantiated.
      */
     private Main() {
     }
-    
+
     /**
-     * The main method of the application. It parses the command line parameters 
+     * The main method of the application. It parses the command line parameters
      * and launches the main window.
      *
      * @param args The command line parameters of the application.
      */
     public static void main(String[] args) {
         ErrorReporting.setShowWarnings(true);
-        
+
         MainFrame frame = new MainFrame();
         frame.setSize(new Dimension(1024, 680));
         frame.setVisible(true);
         frame.loadGCTraces(args);
     }
-    
+
 }

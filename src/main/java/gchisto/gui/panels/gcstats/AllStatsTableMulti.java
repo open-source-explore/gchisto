@@ -24,25 +24,18 @@
 package gchisto.gui.panels.gcstats;
 
 import gchisto.gui.utils.GUIUtilities;
-import gchisto.utils.Calculations;
-import gchisto.utils.Comparisons;
-import gchisto.utils.Formatter;
-import gchisto.utils.Formatting;
-import gchisto.utils.Locker;
+import gchisto.utils.*;
 import gchisto.utils.errorchecking.ArgumentChecking;
 import gchisto.utils.errorchecking.ShouldNotReachHereException;
-import java.awt.Color;
-import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
+import org.jfree.data.category.CategoryDataset;
+
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
-import org.jfree.data.category.CategoryDataset;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A table that shows summary GC statistics for the loaded GC traces,
@@ -63,7 +56,6 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
      * percentage differences that fall within two boundaries will share
      * colors.
      *
-     *
      * @see #FG_POS_DIFF_COLORS
      * @see #FG_NEG_DIFF_COLORS
      * @see #BG_POS_DIFF_COLORS
@@ -71,7 +63,7 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
      * @see #DIFF_BOLD_FONT
      */
     static final private double[] DIFF_BOUNDS = {
-        0.0, 5.0
+            0.0, 5.0
     };
     /**
      * The background colors for the labels that show percentage differences
@@ -86,8 +78,8 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
      * @see #DIFF_BOLD_FONT
      */
     static final private Color BG_POS_DIFF_COLORS[] = {
-        // new Color(255, 170, 170), new Color(235, 0, 0)
-        GUIUtilities.TABLE_COMPONENT_BG_COLOR, Color.WHITE, Color.WHITE
+            // new Color(255, 170, 170), new Color(235, 0, 0)
+            GUIUtilities.TABLE_COMPONENT_BG_COLOR, Color.WHITE, Color.WHITE
     };
     /**
      * The background colors for the labels that show percentage differences
@@ -102,8 +94,8 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
      * @see #DIFF_BOLD_FONT
      */
     static final private Color BG_NEG_DIFF_COLORS[] = {
-        // new Color(150, 255, 150), new Color(0, 170, 0)
-        GUIUtilities.TABLE_COMPONENT_BG_COLOR, Color.WHITE, Color.WHITE
+            // new Color(150, 255, 150), new Color(0, 170, 0)
+            GUIUtilities.TABLE_COMPONENT_BG_COLOR, Color.WHITE, Color.WHITE
     };
     /**
      * The foreground colors for the labels that show percentage differences
@@ -118,8 +110,8 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
      * @see #DIFF_BOLD_FONT
      */
     static final private Color FG_POS_DIFF_COLORS[] = {
-        // Color.BLACK, Color.WHITE
-        GUIUtilities.TABLE_COMPONENT_FG_COLOR, new Color(220, 0, 0), new Color(220, 0, 0)
+            // Color.BLACK, Color.WHITE
+            GUIUtilities.TABLE_COMPONENT_FG_COLOR, new Color(220, 0, 0), new Color(220, 0, 0)
     };
     /**
      * The foreground colors for the labels that show percentage differences
@@ -134,8 +126,8 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
      * @see #DIFF_BOLD_FONT
      */
     static final private Color FG_NEG_DIFF_COLORS[] = {
-        // Color.BLACK, Color.WHITE
-        GUIUtilities.TABLE_COMPONENT_FG_COLOR, new Color(0, 150, 0), new Color(0, 150, 0)
+            // Color.BLACK, Color.WHITE
+            GUIUtilities.TABLE_COMPONENT_FG_COLOR, new Color(0, 150, 0), new Color(0, 150, 0)
     };
     /**
      * Whether the font of the labels that show percentage differences
@@ -148,7 +140,7 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
      * @see #BG_NEG_DIFF_COLORS
      */
     static final private boolean DIFF_BOLD_FONT[] = {
-        false, false, true
+            false, false, true
     };
     /**
      * The color of the table grid.
@@ -169,14 +161,14 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
         /**
          * It returns a label for a particular table cell.
          *
-         * @param table The table in which the label will be included.
-         * @param value The label to be returned.
+         * @param table      The table in which the label will be included.
+         * @param value      The label to be returned.
          * @param isSelected Whether the label is selected or not; currently
-         * this is ignored.
-         * @param hasFocus Whether the label has focus or not; currently
-         * this is ignored.
-         * @param row The row in which the label will be added.
-         * @param col The column in which the label will be added.
+         *                   this is ignored.
+         * @param hasFocus   Whether the label has focus or not; currently
+         *                   this is ignored.
+         * @param row        The row in which the label will be added.
+         * @param col        The column in which the label will be added.
          * @return The label of a particular table cell.
          */
         public Component getTableCellRendererComponent(
@@ -191,6 +183,7 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
             return (JLabel) value;
         }
     }
+
     final private Model model;
     final private Locker locker;
 
@@ -292,7 +285,7 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
          * It returns whether the given cell is editable. Right now, no cells
          * are editable.
          *
-         * @param rowIndex The row of the cell.
+         * @param rowIndex    The row of the cell.
          * @param columnIndex The column of the cell.
          * @return Whether the given cell is editable.
          */
@@ -307,7 +300,7 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
          * It returns the value of the given cell. Right now, the value is
          * actually the <tt>JLabel</tt> for that cell.
          *
-         * @param rowIndex The row of the cell.
+         * @param rowIndex    The row of the cell.
          * @param columnIndex The column of the cell.
          * @return The value of the given cell.
          */
@@ -322,8 +315,8 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
          * It sets the value of the given cell. Right now, we do not allow
          * cells to be editable, hence this should not be called.
          *
-         * @param value The new value for the given cell.
-         * @param rowIndex The row of the given cell.
+         * @param value       The new value for the given cell.
+         * @param rowIndex    The row of the given cell.
          * @param columnIndex The column of the given cell.
          */
         public void setValueAt(Object value, int rowIndex, int columnIndex) {
@@ -339,11 +332,11 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
          * the label. The style of the label includes background and foreground
          * colors,
          *
-         * @param rowIndex The row of the table cell.
+         * @param rowIndex    The row of the table cell.
          * @param columnIndex The column of the table cell.
-         * @param percDiff The percentage difference that will dictate the
-         * style of the label.
-         * @param italic Whether the label text will be italic or not.
+         * @param percDiff    The percentage difference that will dictate the
+         *                    style of the label.
+         * @param italic      Whether the label text will be italic or not.
          */
         private void setLabelStyle(
                 JLabel label,
@@ -396,8 +389,8 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
                     }
 
                     for (int metric = DatasetGenerator.METRIC_FIRST;
-                            metric <= DatasetGenerator.METRIC_LAST;
-                            ++metric) {
+                         metric <= DatasetGenerator.METRIC_LAST;
+                         ++metric) {
                         CategoryDataset dataset =
                                 datasets[metric - DatasetGenerator.METRIC_FIRST];
                         int c = metricToColumn(metric);
@@ -414,8 +407,8 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
                     }
 
                     for (int metric = DatasetGenerator.METRIC_FIRST;
-                            metric <= DatasetGenerator.METRIC_LAST;
-                            ++metric) {
+                         metric <= DatasetGenerator.METRIC_LAST;
+                         ++metric) {
                         CategoryDataset dataset =
                                 datasets[metric - DatasetGenerator.METRIC_FIRST];
                         int c = metricToColumn(metric);
@@ -445,7 +438,7 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
         private JLabel[] createNewRow() {
             return createNewRow(null);
         }
-        
+
         private JLabel[] createNewRow(String tip) {
             JLabel[] rowLabels = new JLabel[columns];
             for (int i = 0; i < columns; ++i) {
@@ -518,7 +511,7 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
                     if (!datasetGenerator.isValueValid(j, i)) {
                         continue;
                     }
-                    
+
                     String tip = datasetGenerator.getLongGCTraceName(j);
 
                     if (j == 0) {
@@ -550,7 +543,7 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
          * It creates a new instance of this table model.
          *
          * @param datasetGenerator The dataset generator that will generator
-         * the values for the table.
+         *                         the values for the table.
          */
         public Model(DatasetGenerator datasetGenerator) {
             this.datasetGenerator = datasetGenerator;
@@ -558,7 +551,7 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
             columnNames[0] = "";
             columnNames[1] = "";
             for (int metric = DatasetGenerator.METRIC_FIRST;
-                    metric <= DatasetGenerator.METRIC_LAST; ++metric) {
+                 metric <= DatasetGenerator.METRIC_LAST; ++metric) {
                 String metricName =
                         DatasetGenerator.getMetricNameWithUnit(metric);
 
@@ -609,7 +602,7 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
      * It creates a new instance of this panel.
      *
      * @param datasetGenerator The dataset generator that will produce
-     * the values for the table.
+     *                         the values for the table.
      */
     public AllStatsTableMulti(
             DatasetGenerator datasetGenerator,
@@ -633,7 +626,8 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
         this.locker = locker;
     }
 
-    /** This method is called from within the constructor to
+    /**
+     * This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.
@@ -646,15 +640,15 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
         comparisonCheckBox = new javax.swing.JCheckBox();
 
         table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+                new Object[][]{
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null}
+                },
+                new String[]{
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                }
         ));
         tableScrollPane.setViewportView(table);
 
@@ -668,24 +662,25 @@ public class AllStatsTableMulti extends javax.swing.JPanel {
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(comparisonCheckBox)
-                .addContainerGap())
-            .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(layout.createSequentialGroup()
+                                .add(comparisonCheckBox)
+                                .addContainerGap())
+                        .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(comparisonCheckBox))
+                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                                .add(tableScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(comparisonCheckBox))
         );
     }// </editor-fold>//GEN-END:initComponents
+
     private void comparisonCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comparisonCheckBoxActionPerformed
         // TODO add your handling code here:
         update();
-}//GEN-LAST:event_comparisonCheckBoxActionPerformed
+    }//GEN-LAST:event_comparisonCheckBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox comparisonCheckBox;

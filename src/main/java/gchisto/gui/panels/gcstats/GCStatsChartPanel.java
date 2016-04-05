@@ -28,7 +28,6 @@ import gchisto.utils.Refresher;
 import gchisto.utils.WorkerThread;
 
 /**
- *
  * @author tony
  */
 abstract public class GCStatsChartPanel extends AbstractChartPanel {
@@ -46,6 +45,7 @@ abstract public class GCStatsChartPanel extends AbstractChartPanel {
             updateDataset();
         }
     }
+
     final private Refresher refreshRefresher;
     final private Refresher updateRefresher;
 

@@ -28,7 +28,6 @@ import gchisto.gctrace.GCTraceCheckpoint;
 import gchisto.gui.utils.TabbedPane;
 
 /**
- *
  * @author tony
  */
 public class Panel extends TabbedPane<ChartPanelSingle> {
@@ -36,16 +35,16 @@ public class Panel extends TabbedPane<ChartPanelSingle> {
     protected ChartPanelSingle newPanel(GCTrace gcTrace) {
         GCTraceCheckpoint checkpoint = new GCTraceCheckpoint(gcTrace);
         checkpoint.checkpoint();
-        
+
         Dataset dataset = new Dataset(gcTrace, checkpoint);
-        
+
         String unitName = String.format("%1.0f ms buckets",
                 Dataset.bucketDurationMS());
         String name = gcTrace.getName();
         ChartPanelSingle panel = new ChartPanelSingle(
                 name, unitName, dataset, checkpoint);
         gcTrace.addListener(panel);
-        
+
         return panel;
     }
 

@@ -25,7 +25,7 @@ package gchisto.utils;
 
 /**
  * A convenience class that includes methods that perform frequently-used
- * comparisons. In the double comparisons, values whose difference is 
+ * comparisons. In the double comparisons, values whose difference is
  * smaller than a given small value are considered equal. All methods are
  * static and this class cannot be instantiated.
  *
@@ -38,7 +38,7 @@ public class Comparisons {
      * then they are considered equal.
      */
     static private final double VERY_SMALL_VALUE = 0.0000001;
-    
+
     /**
      * It determines whether <tt>v1</tt> == <tt>v2</tt>.
      *
@@ -49,7 +49,7 @@ public class Comparisons {
     static public boolean eq(double v1, double v2) {
         return Math.abs(v1 - v2) < VERY_SMALL_VALUE;
     }
-    
+
     /**
      * It determines whether <tt>v1</tt> < <tt>v2</tt>.
      *
@@ -60,7 +60,7 @@ public class Comparisons {
     static public boolean lt(double v1, double v2) {
         return (v2 - v1) > VERY_SMALL_VALUE;
     }
-    
+
     /**
      * It determines whether <tt>v1</tt> <= <tt>v2</tt>.
      *
@@ -71,7 +71,7 @@ public class Comparisons {
     static public boolean lteq(double v1, double v2) {
         return (v2 - v1) > -VERY_SMALL_VALUE;
     }
-    
+
     /**
      * It determines whether <tt>v1</tt> > <tt>v2</tt>.
      *
@@ -82,7 +82,7 @@ public class Comparisons {
     static public boolean gt(double v1, double v2) {
         return (v1 - v2) > VERY_SMALL_VALUE;
     }
-    
+
     /**
      * It determines whether <tt>v1</tt> >= <tt>v2</tt>.
      *
@@ -93,7 +93,7 @@ public class Comparisons {
     static public boolean gteq(double v1, double v2) {
         return (v1 - v2) > -VERY_SMALL_VALUE;
     }
-    
+
     /**
      * It determines whether <tt>v1</tt> < <tt>v</tt> < <tt>v2</tt>.
      *
@@ -104,7 +104,7 @@ public class Comparisons {
     static public boolean between(double v1, double v, double v2) {
         return lt(v1, v) && lt(v, v2);
     }
-    
+
     /**
      * It determines whether <tt>v1</tt> <= <tt>v</tt> <= <tt>v2</tt>.
      *
@@ -115,7 +115,7 @@ public class Comparisons {
     static public boolean betweeneq(double v1, double v, double v2) {
         return lteq(v1, v) && lteq(v, v2);
     }
-    
+
     /**
      * Private constructor to avoid the instantiation of this class.
      */

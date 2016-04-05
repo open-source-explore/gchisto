@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author tony
  */
 public class AbstractDatasetWithGroups extends AbstractChangingDataset
@@ -44,7 +43,7 @@ public class AbstractDatasetWithGroups extends AbstractChangingDataset
      * it will be displayed in the chart).
      */
     final private List<Boolean> groupActive = new ArrayList<Boolean>();
-    
+
     private int groupNum;
 
     public int getGroupCount() {
@@ -60,7 +59,7 @@ public class AbstractDatasetWithGroups extends AbstractChangingDataset
     protected int indexOfGroupName(String groupName) {
         return groupNames.indexOf(groupName);
     }
-    
+
     public boolean isGroupActive(int group) {
         assert 0 <= group && group < groupNum;
 
@@ -73,20 +72,20 @@ public class AbstractDatasetWithGroups extends AbstractChangingDataset
         groupActive.set(group, active);
         datasetChanged();
     }
-    
+
     synchronized public void addGroup(int id, String groupName) {
         groupNames.add(id, groupName);
         groupActive.add(id, true);
         groupNum += 1;
-        
+
         assert groupNames.size() == groupNum;
         assert groupActive.size() == groupNum;
     }
-    
+
     public AbstractDatasetWithGroups() {
         groupNum = 0;
     }
-    
+
     public AbstractDatasetWithGroups(String[] groupNames) {
         this();
         for (int i = 0; i < groupNames.length; ++i) {

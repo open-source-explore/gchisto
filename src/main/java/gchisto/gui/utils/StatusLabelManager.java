@@ -24,8 +24,9 @@
 package gchisto.gui.utils;
 
 import gchisto.utils.errorchecking.ArgumentChecking;
-import java.awt.Color;
-import javax.swing.JLabel;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * A class that manages the behavior of a <tt>JLabel</tt>. It allows the
@@ -34,38 +35,38 @@ import javax.swing.JLabel;
  * to the original values after some time has elapsed.
  *
  * @author Tony Printezis
- * @see    javax.swing.JLabel
+ * @see javax.swing.JLabel
  */
 public class StatusLabelManager {
-    
+
     /**
      * A class that implements the deamon loop that monitors the updates
      * to the label and resets, when necessary, the label.
      */
     public class Deamon implements Runnable {
-        
+
         /**
          * The time period between the last time the label text was set
          * and the label is cleared.
          *
          * @see #run()
          */
-        static final private long CLEAR_AFTER_TIME_MS =  7 * 1000;
-        
+        static final private long CLEAR_AFTER_TIME_MS = 7 * 1000;
+
         /**
          * The period that the deamon thread sleeps between checking
          * whether it is time to clear the label.
          *
          * @see #run()
          */
-        static final private long SLEEP_PERIOD_MS     =  1 * 1000 + 50;
-        
+        static final private long SLEEP_PERIOD_MS = 1 * 1000 + 50;
+
         /**
          * The monitor through which the deamon is notified that the time
          * stamp has been modified.
          */
         final private Object monitor;
-        
+
         /**
          * The deamon loop that monitors the updates to the label and resets,
          * when necessary, the label.
@@ -73,7 +74,7 @@ public class StatusLabelManager {
         public void run() {
             while (true) {
                 long oldTimeStamp = timeStampMS;
-                synchronized(monitor) {
+                synchronized (monitor) {
                     while (oldTimeStamp == timeStampMS) {
                         try {
                             monitor.wait();
@@ -81,7 +82,7 @@ public class StatusLabelManager {
                         }
                     }
                 }
-                
+
                 long currTimeStamp = timeStampMS;
                 while (currTimeStamp < timeStampMS + CLEAR_AFTER_TIME_MS) {
                     try {
@@ -90,93 +91,93 @@ public class StatusLabelManager {
                     }
                     currTimeStamp = System.currentTimeMillis();
                 }
-                
+
                 resetLabel();
             }
         }
-        
+
         /**
          * Creates a new instance of the deamon.
          *
          * @param monitor The monitor through which the deamon is notified
-         * that the time stamp has been modified.
+         *                that the time stamp has been modified.
          */
         public Deamon(Object monitor) {
             this.monitor = monitor;
         }
-        
+
     }
-    
+
     /**
      * The foreground of the label when a message is shown.
      *
      * @see #showMessage(String)
      */
     static final private Color MESSAGE_FG_COLOR = Color.DARK_GRAY;
-    
+
     /**
      * The background of the label when a message is shown.
      *
      * @see #showMessage(String)
      */
     static final private Color MESSAGE_BG_COLOR = Color.LIGHT_GRAY;
-    
+
     /**
      * The foreground of the label when an error is shown.
      *
      * @see #showError(String)
      */
     static final private Color ERROR_FG_COLOR = Color.WHITE;
-    
+
     /**
      * The background of the label when an error is shown.
      *
      * @see #showError(String)
      */
     static final private Color ERROR_BG_COLOR = Color.RED;
-    
+
     /**
      * The label managed by this object.
      */
     final private JLabel statusLabel;
-    
+
     /**
      * The original text of the label.
      */
     final private String originalText;
-    
+
     /**
      * The original opacity of the label.
      */
     final private boolean originalIsOpaque;
-    
+
     /**
      * The original foreground color of the label.
      */
     final private Color originalFGColor;
-    
+
     /**
      * The original background color of the label.
      */
     final private Color originalBGColor;
-    
+
     /**
      * The time stamp, in ms, when the label was last set.
      */
     volatile private long timeStampMS;
-    
+
     /**
      * It brings the time stamp up-to-date.
      */
     private void updateTimeStamp() {
         timeStampMS = System.currentTimeMillis();
     }
-    
+
     /**
      * It updates the contents and look of the label.
      *
-     * @param str The new text of the label.
-     * @param opaque Whether the label will be opaque.
+     * @param str     The new text of the label.
+     * @param opaque  Whether the label will be opaque.
      * @param fgColor The foreground color of the label.
      * @param bgColor The background color of the label.
      */
@@ -188,16 +189,16 @@ public class StatusLabelManager {
         assert str != null;
         assert fgColor != null;
         assert bgColor != null;
-        
+
         statusLabel.setText(str);
         statusLabel.setOpaque(opaque);
         statusLabel.setForeground(fgColor);
         statusLabel.setBackground(bgColor);
-        
+
         updateTimeStamp();
         notifyAll();
     }
-    
+
     /**
      * It shows a message on the status label. The look of the status label
      * is updated accordingly.
@@ -206,10 +207,10 @@ public class StatusLabelManager {
      */
     public void showMessage(String str) {
         ArgumentChecking.notNull(str, "str");
-        
+
         updateLabel(str, false, MESSAGE_FG_COLOR, MESSAGE_BG_COLOR);
     }
-    
+
     /**
      * It shows an error on the status label. The look of the status label
      * is updated accordingly.
@@ -218,10 +219,10 @@ public class StatusLabelManager {
      */
     public void showError(String str) {
         ArgumentChecking.notNull(str, "str");
-        
+
         updateLabel("ERROR: " + str, true, ERROR_FG_COLOR, ERROR_BG_COLOR);
     }
-    
+
     /**
      * It resets the contents and look of the label to its original state.
      */
@@ -229,7 +230,7 @@ public class StatusLabelManager {
         updateLabel(originalText, originalIsOpaque,
                 originalFGColor, originalBGColor);
     }
-    
+
     /**
      * It creates a new status label manager instance.
      *
@@ -237,14 +238,14 @@ public class StatusLabelManager {
      */
     public StatusLabelManager(JLabel statusLabel) {
         ArgumentChecking.notNull(statusLabel, "statusLabel");
-        
+
         this.statusLabel = statusLabel;
         this.originalText = statusLabel.getText();
         this.originalIsOpaque = statusLabel.isOpaque();
         this.originalFGColor = statusLabel.getForeground();
         this.originalBGColor = statusLabel.getBackground();
         updateTimeStamp();
-        
+
         new Thread(new Deamon(this)).start();
     }
 }

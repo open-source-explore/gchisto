@@ -26,7 +26,7 @@ package gchisto.gctracegenerator;
 import gchisto.gctrace.GCTrace;
 
 public class NopGCTraceGeneratorListener implements GCTraceGeneratorListener {
-    
+
     public void started() {
     }
 
@@ -35,7 +35,7 @@ public class NopGCTraceGeneratorListener implements GCTraceGeneratorListener {
 
     public void failed() {
     }
-    
+
     public NopGCTraceGeneratorListener() {
     }
 

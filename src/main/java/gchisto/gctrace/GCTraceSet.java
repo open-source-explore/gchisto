@@ -27,6 +27,7 @@ import gchisto.gcactivity.GCActivity;
 import gchisto.gcactivity.GCActivitySet;
 import gchisto.utils.errorchecking.ArgumentChecking;
 import gchisto.utils.errorchecking.ErrorReporting;
+
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -35,18 +36,18 @@ import java.util.LinkedList;
  * as an index, which is the position of the GC trace in the GC trace set list,
  * starting from 0. This is the data structure from which all the data
  * in the loaded GC traces are reachable from.
- * <p>
+ * <p/>
  * Because it extends <tt>java.util.LinkedList</tt>, an iteration over the GC
  * activities in it can be easily done using the standard for-loop over
  * collections.
  *
  * @author Tony Printezis
- * @see    GCTrace
- * @see    GCTraceSetListener
- * @see    java.util.LinkedList
+ * @see GCTrace
+ * @see GCTraceSetListener
+ * @see java.util.LinkedList
  */
 public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
-    
+
     /**
      * The map that contains all the GC activity names of all the
      * GC traces added to this set.
@@ -54,7 +55,7 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      * @see #recreateAllGCActivityNames()
      */
     private GCActivityNames allGCActivityNames = new GCActivityNames();
-    
+
     /**
      * The GC trace set listeners.
      *
@@ -62,7 +63,7 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      * @see #removeListener(GCTraceSetListener)
      */
     final private GCTraceSetListenerSet listeners = new GCTraceSetListenerSet();
-    
+
     /**
      * It creates a name for the GC trace that is associated with the
      * given file that is unique in this GC trace set. Typically, the name will
@@ -73,12 +74,12 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      *
      * @param file The file for which a unique name will be created.
      * @return A unique GC trace name for the given file.
-     *
+     * <p/>
      * TODO
      */
     private String createUniqueGCTraceName(GCTrace gcTrace) {
         assert gcTrace != null;
-        
+
         String originalName = gcTrace.getSuggestedName();
         String name = originalName;
         int i = 0;
@@ -88,7 +89,7 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
         }
         return name;
     }
-    
+
     /**
      * It iterates over the GC traces in this set and recreates
      * the map that contains all the GC activity names.
@@ -96,12 +97,12 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
     private void recreateAllGCActivityNames() {
         allGCActivityNames = new GCActivityNames();
         for (GCTrace trace : this) {
-            GCActivityNames gcActivityNames =  trace.getGCActivityNames();
+            GCActivityNames gcActivityNames = trace.getGCActivityNames();
             allGCActivityNames.merge(gcActivityNames);
-            
+
         }
     }
-    
+
     /**
      * It finds the GC trace associated with the given name.
      *
@@ -111,7 +112,7 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      */
     public GCTrace findGCTrace(String gcTraceName) {
         ArgumentChecking.notNull(gcTraceName, "gcTraceName");
-        
+
         for (GCTrace trace : this) {
             if (trace.getName().equals(gcTraceName)) {
                 return trace;
@@ -119,7 +120,7 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
         }
         return null;
     }
-    
+
     /**
      * It finds the GC trace with the given index.
      *
@@ -128,10 +129,10 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      */
     public GCTrace findGCTrace(int index) {
         ArgumentChecking.withinBounds(index, 0, size() - 1, "index");
-        
+
         return get(index);
     }
-    
+
     /**
      * It finds the index of the GC trace associated with the given name.
      *
@@ -141,7 +142,7 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      */
     public int findGCTraceIndex(String gcTraceName) {
         ArgumentChecking.notNull(gcTraceName, "gcTraceName");
-        
+
         int index = 0;
         for (GCTrace trace : this) {
             if (trace.getName().equals(gcTraceName)) {
@@ -151,7 +152,7 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
         }
         return -1;
     }
-    
+
     /**
      * It adds a new GC trace to this set. Before adding it, it will set
      * its name to one that is based on the file of the GC trace and
@@ -159,26 +160,25 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      * <tt>gcTraceAdded()</tt> method on the listeners of this set.
      *
      * @param gcTrace The new GC trace to be added to this set.
-     *
      * @see #createUniqueGCTraceName(File)
      * @see gchisto.gctraceset.GCTraceSetListener#gcTraceAdded(GCTrace)
-     *
+     * <p/>
      * TODO
      */
     synchronized public void addGCTrace(GCTrace gcTrace) {
         ArgumentChecking.notNull(gcTrace, "gcTrace");
-        
+
         String gcTraceName = createUniqueGCTraceName(gcTrace);
         gcTrace.setName(gcTraceName);
         gcTrace.setAddedDate(new Date(System.currentTimeMillis()));
         gcTrace.addListener(this);
         add(gcTrace);
-        
+
         recreateAllGCActivityNames();
         listeners.callGCTraceAdded(gcTrace);
         gcTrace.afterAddingToGCTraceSet();
     }
-    
+
     /**
      * It renames a GC trace. If the new name already exists, it will do
      * nothing. If the new name does not exist, it will set the name of
@@ -186,14 +186,13 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      * <tt>gcTraceRenamed()</tt> method on the listeners of this set.
      *
      * @param gcTraceName The name of the GC trace to be renamed.
-     * @param newName The new name of the GC trace.
-     *
+     * @param newName     The new name of the GC trace.
      * @see gchisto.gctraceset.GCTraceSetListener#gcTraceRenamed(GCTrace)
      */
     synchronized public void rename(String gcTraceName, String newName) {
         ArgumentChecking.notNull(gcTraceName, "gcTraceName");
         ArgumentChecking.notNull(newName, "newName");
-        
+
         GCTrace gcTrace = findGCTrace(gcTraceName);
         ErrorReporting.fatalError(gcTrace != null,
                 gcTraceName + " does not exist in the GC trace set.");
@@ -205,30 +204,29 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
                     " already exists.");
         }
     }
-    
+
     /**
      * It removes the GC trace associated with the given name from this set.
      * After removing it, it will call the <tt>gcTraceRemoved</tt> method
      * on the listeners of this set.
      *
      * @param gcTraceName The name of the GC trace to be removed.
-     *
      * @see gchisto.gctraceset.GCTraceSetListener#gcTraceRemoved(GCTrace)
      */
     synchronized public void remove(String gcTraceName) {
         ArgumentChecking.notNull(gcTraceName, "gcTraceName");
-        
+
         GCTrace gcTrace = findGCTrace(gcTraceName);
         ErrorReporting.fatalError(gcTrace != null,
                 gcTraceName + " does not exist in the GC trace set");
         gcTrace.beforeRemovingFromGCTraceSet();
         boolean ret = super.remove(gcTrace);
         assert ret;
-        
+
         recreateAllGCActivityNames();
         listeners.callGCTraceRemoved(gcTrace);
     }
-    
+
     /**
      * It moves the GC trace associated with the given name up in the order
      * in this set, so that its index is its old index minus 1. If its
@@ -236,12 +234,11 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      * the <tt>gcTraceMovedUp</tt> method on the listeners of this set.
      *
      * @param gcTraceName The name of the GC trace to be moved.
-     *
      * @see gchisto.gctraceset.GCTraceSetListener#gcTraceMovedUp(GCTrace)
      */
     synchronized public void moveUp(String gcTraceName) {
         ArgumentChecking.notNull(gcTraceName, "gcTraceName");
-        
+
         GCTrace gcTrace = findGCTrace(gcTraceName);
         ErrorReporting.fatalError(gcTrace != null,
                 gcTraceName + " does not exist in the GC trace set");
@@ -256,7 +253,7 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
                     " already at small index.");
         }
     }
-    
+
     /**
      * It moves the GC trace associated with the given name down in the order
      * in this set, so that its index is its old index plus 1. If its
@@ -264,12 +261,11 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      * the <tt>gcTraceMovedDown</tt> method on the listeners of this set.
      *
      * @param gcTraceName The name of the GC trace to be moved.
-     *
      * @see gchisto.gctraceset.GCTraceSetListener#gcTraceMovedDown(GCTrace)
      */
     synchronized public void moveDown(String gcTraceName) {
         ArgumentChecking.notNull(gcTraceName, "gcTraceName");
-        
+
         GCTrace gcTrace = findGCTrace(gcTraceName);
         ErrorReporting.fatalError(gcTrace != null,
                 gcTraceName + " does not exist in the GC trace set");
@@ -284,7 +280,7 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
                     " already at highest index.");
         }
     }
-    
+
     /**
      * It adds a listener to this set.
      *
@@ -292,10 +288,10 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      */
     synchronized public void addListener(GCTraceSetListener listener) {
         ArgumentChecking.notNull(listener, "listener");
-        
+
         listeners.add(listener);
     }
-    
+
     /**
      * It removes a listener from this set.
      *
@@ -303,14 +299,14 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
      */
     synchronized public void removeListener(GCTraceSetListener listener) {
         ArgumentChecking.notNull(listener, "listener");
-        
+
         listeners.remove(listener);
     }
-    
+
     public GCActivityNames getAllGCActivityNames() {
         return allGCActivityNames;
     }
-    
+
     /**
      * It returns the ID of the given GC activity name in the map that
      * contains all the GC activity names that appear in the GC traces of
@@ -324,7 +320,7 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
     public int getActivityID(String gcActivityName) {
         return allGCActivityNames.indexOf(gcActivityName);
     }
-    
+
     public void gcActivityAdded(
             GCTrace gcTrace,
             GCActivitySet gcActivitySet,
@@ -332,11 +328,11 @@ public class GCTraceSet extends LinkedList<GCTrace> implements GCTraceListener {
     }
 
     public void gcActivityNameAdded(GCTrace gcTrace,
-            int id,
-            String gcActivityName) {
+                                    int id,
+                                    String gcActivityName) {
         recreateAllGCActivityNames();
     }
-    
+
     /**
      * It creates a new GC trace set instance.
      */
