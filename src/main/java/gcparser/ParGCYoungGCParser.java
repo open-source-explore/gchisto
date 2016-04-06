@@ -23,73 +23,70 @@
  */
 package gcparser;
 
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class ParGCYoungGCParser extends GCParser
-{
-	public ParGCYoungGCParser(GCStats gcstats, boolean verbose)
-	{
-		super(gcstats, verbose);
-		// _debug = System.err;	// XXX
-	}
+public class ParGCYoungGCParser extends GCParser {
+    public ParGCYoungGCParser(GCStats gcstats, boolean verbose) {
+        super(gcstats, verbose);
+        // _debug = System.err;	// XXX
+    }
 
-	public boolean parse(String filename, int line, String s)
-	{
-		Matcher m = _pattern.matcher(s);
-		if (m.find())
-		{
-			save_match_state(filename, line, s);
-			// debug(s, m);	// XXX
-			add_young_gc(m, timestamp_grp,
-				yg_used_beg_grp, yg_used_end_grp, 
-				yg_commit_end_grp, th_used_beg_grp,
-				th_used_end_grp, th_commit_end_grp,
-				gc_time_grp);
-			return true;
-		}
+    public boolean parse(String filename, int line, String s) {
+        Matcher m = _pattern.matcher(s);
+        if (m.find()) {
+            save_match_state(filename, line, s);
+            // debug(s, m);	// XXX
+            add_young_gc(m, timestamp_grp,
+                    yg_used_beg_grp, yg_used_end_grp,
+                    yg_commit_end_grp, th_used_beg_grp,
+                    th_used_end_grp, th_commit_end_grp,
+                    gc_time_grp);
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	// XXX
-	private void debug(String s, Matcher m)
-	{
-		if (_debug == null) return;
-		debug(s); debug();
-		debug(m, yg_used_beg_grp,   "yub");
-		debug(m, yg_used_end_grp,   " yue");
-		debug(m, yg_commit_end_grp, " yco");
-		debug();
-		debug(m, th_used_beg_grp,   "tub");
-		debug(m, th_used_end_grp,   " tue");
-		debug(m, th_commit_end_grp, " tco");
-		debug();
-	}
+    // XXX
+    private void debug(String s, Matcher m) {
+        if (_debug == null) return;
+        debug(s);
+        debug();
+        debug(m, yg_used_beg_grp, "yub");
+        debug(m, yg_used_end_grp, " yue");
+        debug(m, yg_commit_end_grp, " yco");
+        debug();
+        debug(m, th_used_beg_grp, "tub");
+        debug(m, th_used_end_grp, " tue");
+        debug(m, th_commit_end_grp, " tco");
+        debug();
+    }
 
-	private static Pattern _pattern = Pattern.compile(
-		timestamp_re + pargc_young_gc_re +
-		"\\[" + pargc_young_gen_name_re + ": +" +
-		heap_size_status_re + "\\] " +
-		heap_size_status_re + ", " + 
-		gc_time_secs_re + "\\]");
+    private static Pattern _pattern = Pattern.compile(
+            timestamp_re + pargc_young_gc_re +
+                    "\\[" + pargc_young_gen_name_re + ": +" +
+                    heap_size_status_re + "\\] " +
+                    heap_size_status_re + ", " +
+                    gc_time_secs_re + "\\]");
 
-	private static final int timestamp_grp = timestamp_re_time_group;
+    private static final int timestamp_grp = timestamp_re_time_group;
 
-	private static final int yg_used_beg_grp =
-		timestamp_re_groups + pargc_young_gc_re_groups +
-		pargc_young_gen_name_re_groups + 1;
-	private static final int yg_used_end_grp =
-		yg_used_beg_grp + heap_size_re_groups;
-	private static final int yg_commit_end_grp =
-		yg_used_end_grp + heap_size_re_groups;
+    private static final int yg_used_beg_grp =
+            timestamp_re_groups + pargc_young_gc_re_groups +
+                    pargc_young_gen_name_re_groups + 1;
+    private static final int yg_used_end_grp =
+            yg_used_beg_grp + heap_size_re_groups;
+    private static final int yg_commit_end_grp =
+            yg_used_end_grp + heap_size_re_groups;
 
-	private static final int th_used_beg_grp =
-		yg_commit_end_grp + heap_size_re_groups;
-	private static final int th_used_end_grp =
-		th_used_beg_grp + heap_size_re_groups;
-	private static final int th_commit_end_grp =
-		th_used_end_grp + heap_size_re_groups;
+    private static final int th_used_beg_grp =
+            yg_commit_end_grp + heap_size_re_groups;
+    private static final int th_used_end_grp =
+            th_used_beg_grp + heap_size_re_groups;
+    private static final int th_commit_end_grp =
+            th_used_end_grp + heap_size_re_groups;
 
-	private static final int gc_time_grp =
-		th_commit_end_grp + heap_size_re_groups;
+    private static final int gc_time_grp =
+            th_commit_end_grp + heap_size_re_groups;
 }

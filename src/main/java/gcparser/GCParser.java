@@ -231,8 +231,7 @@ public abstract class GCParser {
 
     protected double get_ts(Matcher m, int group) {
         String s = m.group(group);
-        return s != null ? Double.parseDouble(s) :
-                gcstats().generate_timestamp();
+        return s != null ? Double.parseDouble(s) : gcstats().generate_timestamp();
     }
 
     // Add a generic data point.
@@ -265,8 +264,7 @@ public abstract class GCParser {
     }
 
     // Add a pause time data point with a timestamp.
-    protected void
-    add_pt(GCMetric metric, double timestamp, double pause_time) {
+    protected void add_pt(GCMetric metric, double timestamp, double pause_time) {
         add_pt(metric, pause_time);
         add_ts(metric, timestamp, timestamp + pause_time);
         add_ts(GCMetric.tgc_time, timestamp, timestamp + pause_time);
@@ -491,8 +489,7 @@ public abstract class GCParser {
                                double th_used_beg, double th_used_end, double th_commit_end,
                                double pg_used_beg, double pg_used_end, double pg_commit_end,
                                double pause_time) {
-        add_full_gc(timestamp_beg,
-                og_used_beg, og_used_end, og_commit_end,
+        add_full_gc(timestamp_beg, og_used_beg, og_used_end, og_commit_end,
                 th_used_beg, th_used_end, th_commit_end,
                 pause_time);
 

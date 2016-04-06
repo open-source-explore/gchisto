@@ -201,10 +201,7 @@ public class CMSGCParser extends GCParser {
     private Matcher _cms_phase_beg_matcher;
     private double _cms_phase_beg_timestamp;
 
-    private static Pattern _cms_imark_pattern = Pattern.compile(
-            timestamp_re + "\\[GC \\[1 (AS)?CMS-initial-mark: " +
-                    cms_heap_size_re + "\\] " +
-                    cms_heap_report_re + "\\]");
+    private static Pattern _cms_imark_pattern = Pattern.compile(timestamp_re + "\\[GC \\[1 (AS)?CMS-initial-mark: " + cms_heap_size_re + "\\] " + cms_heap_report_re + "\\]");
 
     private static final int _cms_imark_timestamp_grp =
             timestamp_re_time_group;
